@@ -3,7 +3,7 @@
  * Traverse Asia theme bootstrap.
  */
 
-define( 'TA_VERSION', '1.1.3' );
+define( 'TA_VERSION', '1.1.4' );
 define( 'TA_DIR', get_template_directory() );
 define( 'TA_URI', get_template_directory_uri() );
 
