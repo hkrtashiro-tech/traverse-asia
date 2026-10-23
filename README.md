@@ -4,19 +4,21 @@ traverse-asia.com リニューアル用のオリジナルテーマです（ク�
 
 ## 構成
 
-| URL | テンプレート | 表示内容 |
-|---|---|---|
-| `/` | `front-page.php` | `template-parts/pages/front.php`。お知らせ欄は最新3件を自動表示 |
-| 固定ページ | `page.php` | スラッグと同名の `template-parts/pages/{slug}.php` があればそのデザイン、なければ本文を記事レイアウトで表示 |
-| `/works/` | `archive-works.php` | 実績（投稿タイプ `works`）。ステップ・国で絞り込み（`?step=` `?area=`） |
-| `/works/{slug}/` | `single-works.php` | 公開時の9件は `template-parts/works/{slug}.php` のデザイン。新しく追加した実績は本文を記事レイアウトで表示 |
-| `/news/` | `archive-news.php` | お知らせ（`news`）とコラム（通常の投稿）をまとめて新しい順に表示。タブは `?kind=press-release / information / column` |
-| `/news/{slug}/`, `/blog/{slug}/` | `single.php` | 記事。h2 から目次を自動生成 |
-| 404 | `404.php` | |
+ページはすべて「デザインのセクションブロック」の組み合わせでできています。ブロックエディターで、セクションを選ぶと右側に文字・画像・リンク・リスト項目の入力欄が出ます。セクションの追加（＋ → 「デザイン｜…」）、並べ替え、削除、リスト項目の複製・削除ができ、新しい固定ページもこのブロックで作れます。
 
-- `template-parts/pages|design|works/*.php` と `assets/css/base.generated.css`、`assets/css/pages/*.css` は、デザインキャンバスの元データ（リポジトリの `design/*.dc.html`）から `python3 tools/build-theme.py` で生成しています。デザインを直したら再生成してください（直接編集すると次の生成で上書きされます）。
-- 手書きのファイル：`header.php` `footer.php` `inc/*.php`（初期設定は `inc/site-setup.php`） `template-parts/article.php` `template-parts/cta.php` `template-parts/contact-form.php` `assets/css/main.css` `assets/js/main.js`。
-- ヘッダー・フッターのメニューは 外観 → メニュー で編集できます（「相談する」ボタンと JP / EN は固定）。初回表示時に現在の項目でメニューを自動作成します。
+| URL | 編集する場所 | 補足 |
+|---|---|---|
+| `/` と各固定ページ | 固定ページ | 未変換のページはデザインの初期内容を表示（初期設定で変換） |
+| `/works/{slug}/` | 実績 | 公開時の9件はブロック。新しい実績は本文だけでも書ける（記事レイアウト） |
+| `/works/` | 固定ページ「【一覧ページ】実績（/works/）」（非公開） | 実績一覧と絞り込みは自動 |
+| `/news/` | 固定ページ「【一覧ページ】お知らせ・インサイト（/news/）」（非公開） | 記事一覧・タブ・ページ送りは自動。`?kind=press-release / information / column` |
+| 404 | 固定ページ「【404ページ】…」（非公開） | |
+| `/news/{slug}/`, `/blog/{slug}/` | お知らせ / 投稿 | 記事レイアウト。h2 から目次を自動生成 |
+
+- セクションブロックの定義 `blocks/blocks.json`、各ページの初期内容 `blocks/content/*.html`、CSS `assets/css/design.generated.css` は、デザインキャンバスの元データ（リポジトリの `design/*.dc.html`）から `python3 tools/build-theme.py` で生成しています（bs4 が必要）。
+- 描画は `inc/blocks.php`（公開ページ）と `assets/js/blocks.js`（エディターのプレビューと入力欄）が同じ定義から行います。
+- 手書きのファイル：`header.php` `footer.php` `inc/*.php` `template-parts/*.php` `assets/css/main.css` `assets/css/editor.css` `assets/js/*.js`。
+- ヘッダー・フッターのメニューは 外観 → メニュー で編集できます（「相談する」ボタンと JP / EN は固定）。
 - `news` 投稿タイプと `news_category` タクソノミーは旧テーマと同じ名前で登録しているので、既存のお知らせはURLもそのまま引き継がれます。
 
 ## 本番への導入手順
@@ -28,6 +30,7 @@ traverse-asia.com リニューアル用のオリジナルテーマです（ク�
    - 事例9件（カテゴリー「事例」）を実績 `works` に移し、新しいスラッグに変更
    - Shopee のコラム3件をカテゴリー「ブログ」に移動（`/shopee/xxx/` → `/blog/xxx/`）
    - お問い合わせフォームを `cf7/contact-form.html` から作成して選択（管理者宛メールと自動返信メール）
+   - デザインしたページ・実績・一覧ページを、ブロックで編集できる形に変換（元の本文はリビジョンに残ります）
    - パーマリンクを更新
 4. 外観 → カスタマイズ → サイト設定 で、会社案内PDFのURLを入力する（未設定の間は「会社案内（PDF）」ボタンがお問い合わせページへ移動します）。
 5. Redirection プラグインで `redirects-traverse-asia.csv` をインポートし、既存ルール `/aboutus/ceo-message/` の転送先を `/company/#message` に変更する。

@@ -196,7 +196,46 @@ function ta_run_site_setup() {
 		$form->save();
 		$form_id = $form->id();
 		set_theme_mod( 'ta_cf7_id', $form_id );
-		$log[] = "お問い合わせフォームを作成して設定しました（ID：$form_id）";
+		$log[] = "お問い合わせフォームを作成して設定しました（ID：{$form_id}）";
+	}
+
+	/* 5. Editable sections -------------------------------------------------------- */
+	// Designed pages get the design as section blocks, so they can be edited in the
+	// block editor. Pages already built from sections are left alone; the previous
+	// text stays in the page's revisions.
+	$targets = array();
+	foreach ( $ta_pages as $path => $title ) {
+		$page = ta_find_page( $path );
+		if ( $page && ta_design_content( basename( $path ) ) ) {
+			$targets[] = array( $page, basename( $path ) );
+		}
+	}
+	$front = get_post( (int) get_option( 'page_on_front' ) );
+	if ( $front ) {
+		$targets[] = array( $front, 'front' );
+	}
+	foreach ( array_keys( $ta_works ) as $slug ) {
+		$work = get_page_by_path( $slug, OBJECT, 'works' );
+		if ( $work ) {
+			$targets[] = array( $work, 'work-' . $slug );
+		}
+	}
+	foreach ( ta_holders() as $key => $title ) {
+		$holder = get_page_by_path( 'ta-holder-' . $key, OBJECT, array( 'page' ) );
+		if ( ! $holder ) {
+			$id     = wp_insert_post( array( 'post_type' => 'page', 'post_status' => 'private', 'post_title' => $title, 'post_name' => 'ta-holder-' . $key ) );
+			$holder = get_post( $id );
+			$log[]  = "編集用のページを作成しました：$title";
+		}
+		$targets[] = array( $holder, $key );
+	}
+	foreach ( $targets as $target ) {
+		list( $post, $key ) = $target;
+		if ( ta_has_sections( $post->post_content ) ) {
+			continue;
+		}
+		wp_update_post( array( 'ID' => $post->ID, 'post_content' => wp_slash( ta_design_content( $key ) ) ) );
+		$log[] = 'ブロックで編集できるようにしました：' . $post->post_title;
 	}
 
 	/* 5. Permalinks --------------------------------------------------------------- */
@@ -247,6 +286,7 @@ function ta_setup_page() {
 			<li>カテゴリー「事例」の9記事を「実績」に移し、新しいURL（/works/…）に変更します。</li>
 			<li>Shopeeのコラム3記事をカテゴリー「ブログ」に移します（URLが /blog/… になります）。</li>
 			<li>Contact Form 7 が有効なら、お問い合わせフォームを作成してサイトに設定します。</li>
+			<li>デザインしたページ・実績・一覧ページを、ブロックエディターで編集できる形にします（既にブロックで作ったページはそのままです。元の本文はリビジョンに残ります）。</li>
 			<li>パーマリンク設定を更新します。</li>
 		</ol>
 		<p>何度実行しても、作成済みのものが重複することはありません。実行前にバックアップを取っておくと安心です。</p>

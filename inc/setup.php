@@ -11,6 +11,16 @@ add_action(
 		add_theme_support( 'html5', array( 'search-form', 'gallery', 'caption', 'style', 'script' ) );
 		add_theme_support( 'responsive-embeds' );
 		add_image_size( 'ta-card', 960, 600, true );
+		// The block editor previews sections with the site's own styles.
+		add_theme_support( 'editor-styles' );
+		add_editor_style(
+			array(
+				'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Instrument+Sans:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho+B1:wght@600;800&display=swap',
+				'assets/css/design.generated.css',
+				'assets/css/main.css',
+				'assets/css/editor.css',
+			)
+		);
 		add_image_size( 'ta-thumb', 540, 360, true );
 	}
 );
@@ -19,12 +29,8 @@ add_action(
 	'wp_enqueue_scripts',
 	function () {
 		wp_enqueue_style( 'ta-fonts', 'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Instrument+Sans:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho+B1:wght@600;800&display=swap', array(), null );
-		wp_enqueue_style( 'ta-base', TA_URI . '/assets/css/base.generated.css', array(), TA_VERSION );
-		wp_enqueue_style( 'ta-main', TA_URI . '/assets/css/main.css', array( 'ta-base' ), TA_VERSION );
-		$key = ta_view_key();
-		if ( file_exists( TA_DIR . '/assets/css/pages/' . $key . '.css' ) ) {
-			wp_enqueue_style( 'ta-page', TA_URI . '/assets/css/pages/' . $key . '.css', array( 'ta-main' ), TA_VERSION );
-		}
+		wp_enqueue_style( 'ta-design', TA_URI . '/assets/css/design.generated.css', array(), TA_VERSION );
+		wp_enqueue_style( 'ta-main', TA_URI . '/assets/css/main.css', array( 'ta-design' ), TA_VERSION );
 		wp_enqueue_script( 'ta-main', TA_URI . '/assets/js/main.js', array(), TA_VERSION, array( 'strategy' => 'defer', 'in_footer' => true ) );
 	}
 );
