@@ -3,7 +3,7 @@
  * Traverse Asia theme bootstrap.
  */
 
-define( 'TA_VERSION', '1.0.2' );
+define( 'TA_VERSION', '1.0.3' );
 define( 'TA_DIR', get_template_directory() );
 define( 'TA_URI', get_template_directory_uri() );
 
@@ -15,3 +15,4 @@ require TA_DIR . '/inc/works.php';
 require TA_DIR . '/inc/contact.php';
 require TA_DIR . '/inc/customizer.php';
 require TA_DIR . '/inc/site-setup.php';
+require TA_DIR . '/inc/menus.php';
