@@ -18,7 +18,7 @@ traverse-asia.com リニューアル用のオリジナルテーマです（ク�
 - セクションブロックの定義 `blocks/blocks.json`、各ページの初期内容 `blocks/content/*.html`、CSS `assets/css/design.generated.css` は、デザインキャンバスの元データ（リポジトリの `design/*.dc.html`）から `python3 tools/build-theme.py` で生成しています（bs4 が必要）。
 - 描画は `inc/blocks.php`（公開ページ）と `assets/js/blocks.js`（エディターのプレビューと入力欄）が同じ定義から行います。
 - 手書きのファイル：`header.php` `footer.php` `inc/*.php` `template-parts/*.php` `assets/css/main.css` `assets/css/editor.css` `assets/js/*.js`。
-- ヘッダー・フッターのメニューは 外観 → メニュー で編集できます（「相談する」ボタンと JP / EN は固定）。
+- ヘッダー・フッターのメニューは 外観 → メニュー で編集できます（「相談する」ボタンと JP / EN は固定）。ヘッダーで項目の下に入れた子項目は、マウスを重ねると開くパネルに表示されます（子項目の「説明」が上の英字ラベルになります）。
 - `news` 投稿タイプと `news_category` タクソノミーは旧テーマと同じ名前で登録しているので、既存のお知らせはURLもそのまま引き継がれます。
 
 ## 本番への導入手順
