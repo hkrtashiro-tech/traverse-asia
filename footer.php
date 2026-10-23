@@ -9,7 +9,6 @@
 </div>
 <nav aria-label="フッターメニュー" style="display: flex; flex-wrap: wrap; gap: 8px 28px; align-content: flex-start;">
 <a href="<?php echo ta_url( '/services/' ); ?>" style="color: #2E3D39; text-decoration: none;">サービス</a>
-<a href="<?php echo ta_url( '/#area' ); ?>" style="color: #2E3D39; text-decoration: none;">対応エリア</a>
 <a href="<?php echo ta_url( '/works/' ); ?>" style="color: #2E3D39; text-decoration: none;">実績</a>
 <a href="<?php echo ta_url( '/brands/shizune/' ); ?>" style="color: #2E3D39; text-decoration: none;">自社ブランド</a>
 <a href="<?php echo ta_url( '/company/' ); ?>" style="color: #2E3D39; text-decoration: none;">会社情報</a>
