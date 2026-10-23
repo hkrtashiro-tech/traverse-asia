@@ -140,3 +140,5 @@ h1,h2,h3{font-feature-settings:"palt"}
 .nrow{grid-template-columns:110px minmax(0,1fr)}
 .nrow .ra{display:none}
 }
+/* Column layouts set on a section apply on desktop; phones and tablets use the class rules. */
+@media (min-width:1025px){[style*="--cols"]{grid-template-columns:var(--cols)}}

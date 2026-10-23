@@ -79,6 +79,16 @@ def prep(b):
     main = re.sub(r'<a ([^>]*)>([\s\S]*?)</a>', link, main)
     main = re.sub(r'/_blob/([0-9a-f]{32})', lambda m: blobs[m.group(1)], main)
     main = dynamic(b, main)
+    # Notes for the design team are not part of the site.
+    k = main.find('制作メモ')
+    if k >= 0:
+        a = main.rfind('<section', 0, k)
+        main = main[:a] + main[main.index('</section>', k) + 10:]
+    # Photo placeholders become images (a neutral picture) so they can be replaced in the editor.
+    main = re.sub(r'<span class="ph-ph" style="([^"]*)">[\s\S]*?</span>',
+                  lambda m: '<img src="placeholder.jpg" alt="" style="%s; object-fit: cover; display: block;">' % m.group(1).rstrip('; '),
+                  main)
+    main = responsive_columns(main, css)
     if b == 'C2':
         main = main.replace('data-sec="map"', 'id="area" data-sec="map"', 1)
     if b == 'S-services':
@@ -92,6 +102,23 @@ def prep(b):
         return '<ta-raw data-i="%d"></ta-raw>' % (len(raws) - 1)
     main = re.sub(r'<svg[\s\S]*?</svg>', raw, main)
     return css, main, raws
+
+
+def responsive_columns(main, css):
+    """A column layout written inline (style="grid-template-columns: …") would beat the
+    class's phone/tablet rule. Keep it as --cols, used on desktop only (see emit in main())."""
+    resp = set()
+    for media, rule in css_rules(css):
+        if media and 'grid-template-columns' in rule:
+            resp.update(re.findall(r'\.([\w-]+)', rule.split('{')[0]))
+
+    def fix(m):
+        tag = m.group(0)
+        cls = re.search(r'class="([^"]*)"', tag)
+        if not cls or not resp.intersection(cls.group(1).split()):
+            return tag
+        return re.sub(r'(style="[^"]*?)grid-template-columns:', r'\1--cols:', tag)
+    return re.sub(r'<[a-z]+ [^>]*grid-template-columns:[^>]*>', fix, main)
 
 
 # ---------------------------------------------------------------- markup -> tree
@@ -517,7 +544,9 @@ def main():
     json.dump({'categories': cats, 'types': {n: types[n] for n in order}, 'calls': CALL_LABEL},
               open(T + '/blocks/blocks.json', 'w'), ensure_ascii=False, separators=(',', ':'))
     open(T + '/assets/css/design.generated.css', 'w').write(
-        '/* Generated from the design canvas boards (design/*.dc.html). Do not edit by hand. */\n' + emit_css(all_css))
+        '/* Generated from the design canvas boards (design/*.dc.html). Do not edit by hand. */\n' + emit_css(all_css) +
+        '/* Column layouts set on a section apply on desktop; phones and tablets use the class rules. */\n'
+        '@media (min-width:1025px){[style*="--cols"]{grid-template-columns:var(--cols)}}\n')
     missing = sorted(f for f in imgs if not os.path.exists(T + '/assets/img/' + f))
     nfields = sum(len(t['fields']) for t in types.values())
     print('pages', len(content), 'block types', len(types), 'top-level fields', nfields,
