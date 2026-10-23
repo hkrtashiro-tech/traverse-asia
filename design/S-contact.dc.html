@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>Traverse Asia Contact｜お問い合わせ</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&amp;family=Instrument+Sans:wght@400;500;600&amp;family=Noto+Sans+JP:wght@400;500;700&amp;family=Shippori+Mincho+B1:wght@600;800&amp;display=swap">
+<style>
+body{margin:0;background:#F4F5F1}
+a{color:#2F5A3A}a:hover{color:#1F3F28}
+.en{font-family:'Instrument Sans',sans-serif}
+.fv{display:grid;grid-template-columns:minmax(0,11fr) minmax(0,10fr)}
+.serif{font-family:'Shippori Mincho B1','Hiragino Mincho ProN','Yu Mincho',serif}
+.fv-ph{position:relative;padding:0 0 64px 56px}
+.fv-ins{position:absolute;left:0;bottom:0;width:34%;border:8px solid #F4F5F1;border-radius:20px;overflow:hidden;background:#F4F5F1}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.who{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.why{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.maprow{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr)}
+.flow{display:grid;grid-template-columns:120px minmax(0,1fr)}
+.case{display:grid;grid-template-columns:132px 170px minmax(0,1fr) 220px}
+.ph-ph{background:repeating-linear-gradient(135deg,#E9ECE5 0 10px,#E2E6DE 10px 20px);display:grid;place-items:center;text-align:center;color:#45524E;font-size:12.5px;font-weight:700;line-height:1.6;padding:12px;box-sizing:border-box}
+.ph-ph small{display:block;font-weight:400;font-size:11.5px}
+.whoart{flex:1 1 420px;min-width:0;max-width:520px}
+.spot{display:block;width:96px;height:64px;margin-bottom:4px}
+.tmark{position:absolute;right:-50px;top:-70px;width:360px;height:360px;opacity:.07;pointer-events:none}
+.mk{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+.vt{writing-mode:vertical-rl;text-orientation:mixed;font-feature-settings:"vpal"}
+.menu-btn{display:none}
+h1,h2,h3{font-feature-settings:"palt"}
+.ml{font-family:'Noto Sans JP',sans-serif;font-size:16px;font-weight:700;paint-order:stroke;stroke:#F4F5F1;stroke-width:5px;stroke-linejoin:round}
+.ms{font-family:'Instrument Sans',sans-serif;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;fill:#45524E;paint-order:stroke;stroke:#F4F5F1;stroke-width:4px;stroke-linejoin:round}
+.mg{font-size:11px}
+.st>span:not(.arw),.st>a{margin-left:14px;margin-right:14px}
+.arw{position:absolute;right:-21px;top:120px;z-index:2;width:22px;height:22px;border-radius:50%;background:#F4F5F1;border:1px solid #22322F;color:#22322F;display:grid;place-items:center;font-size:11px;box-sizing:border-box}
+@media (max-width:1024px){
+.fv,.maprow{grid-template-columns:minmax(0,1fr)}
+.stats,.steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+.who,.why{grid-template-columns:minmax(0,1fr)}
+.case{grid-template-columns:132px minmax(0,1fr)}.case>.cs-tag{display:none}
+.arw{display:none}
+}
+@media (max-width:640px){
+.fv-ph{padding:0 0 40px 28px}
+.fv-ins{width:40%;border-width:6px}
+.stats,.steps,.mk{grid-template-columns:minmax(0,1fr)}
+.flow{grid-template-columns:minmax(0,1fr)}
+.vt{writing-mode:horizontal-tb}
+.hide-sm,.ms,.mg{display:none}
+.ml{font-size:28px;stroke-width:7px}
+.menu-btn{display:inline-flex}
+.nav{display:none!important}
+.nav.open{display:flex!important;width:100%;flex-direction:column;align-items:flex-start;gap:4px;padding:12px 0 8px;font-size:17px!important}
+.pad{padding-left:20px!important;padding-right:20px!important}
+.panel{padding-left:24px!important;padding-right:24px!important}
+}
+.hero{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
+.pnav{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.g4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.g5{display:grid;grid-template-columns:repeat(5,minmax(0,1fr))}
+.svc{display:grid;grid-template-columns:52px minmax(0,5fr) minmax(0,7fr)}
+.sec2{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr)}
+.cr{display:grid;grid-template-columns:132px minmax(0,1fr) 220px}
+@media (max-width:1024px){.hero,.sec2{grid-template-columns:minmax(0,1fr)}.g4,.g5,.pnav{grid-template-columns:repeat(2,minmax(0,1fr))}.g3{grid-template-columns:minmax(0,1fr)}.cr{grid-template-columns:132px minmax(0,1fr)}.cr>.cr-tag{display:none}}
+@media (max-width:640px){.g2,.g4,.g5{grid-template-columns:minmax(0,1fr)}.svc{grid-template-columns:52px minmax(0,1fr)}.svc>span:first-child{grid-row:span 2}.svc>.svc-d{grid-column:2}.cr{grid-template-columns:96px minmax(0,1fr)}.cr img,.cr .ph-ph,.cr .thumb{width:96px!important}}
+.cf{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr)}
+.frow{display:grid;grid-template-columns:220px minmax(0,1fr)}
+.inp{width:100%;box-sizing:border-box;font:inherit;font-size:16px;color:#22322F;background:#FFFFFF;border:1px solid #B9C1B5;border-radius:12px;padding:12px 16px;min-height:52px}
+.chip{display:inline-flex;align-items:center;gap:8px;border:1px solid #B9C1B5;border-radius:999px;padding:6px 16px;font-size:14.5px;background:#FFFFFF;cursor:pointer}
+.chip input{accent-color:#2F5A3A;margin:0}
+.req{font-size:11.5px;font-weight:700;color:#FFFFFF;background:#2F5A3A;border-radius:4px;padding:1px 6px;margin-left:8px;vertical-align:2px}
+.opt{font-size:11.5px;font-weight:700;color:#45524E;border:1px solid #B9C1B5;border-radius:4px;padding:0 6px;margin-left:8px;vertical-align:2px}
+@media (max-width:1024px){.cf{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:640px){.frow{grid-template-columns:minmax(0,1fr)}}
+</style>
+</helmet>
+<div style="background: #F4F5F1; color: #22322F; font-family: 'Noto Sans JP', 'Hiragino Sans', 'Yu Gothic', sans-serif; font-size: 16px; line-height: 2; letter-spacing: 0.02em;">
+<header class="site-header">
+<div class="pad hdr-in" style="max-width: 1320px; margin: 0 auto; padding: 20px 40px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 32px; box-sizing: border-box;">
+<a href="#" style="text-decoration: none; color: #22322F; display: inline-flex; align-items: baseline; gap: 12px; margin-right: auto;"><span style="font-family: 'Cormorant Garamond', serif; font-size: 27px; font-weight: 600; letter-spacing: 0;">Traverse Asia</span><span class="en hide-sm" style="font-size: 12px; letter-spacing: 0.14em; color: #45524E;">JAPAN TO ASIA</span></a>
+<button class="menu-btn" type="button" aria-expanded="{{navOpen}}" aria-controls="c-nav" onClick="{{toggleNav}}" style="font: inherit; font-size: 14px; font-weight: 700; background: transparent; border: 1px solid #22322F; border-radius: 999px; color: #22322F; padding: 0 20px; min-height: 44px; align-items: center; cursor: pointer;">{{navLabel}}</button>
+<nav id="c-nav" class="nav {{navCls}}" aria-label="メインメニュー" style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px 28px; font-size: 14.5px;">
+<a href="#" style="color: #22322F; text-decoration: none;">サービス</a>
+<a href="#" style="color: #22322F; text-decoration: none;">対応エリア</a>
+<a href="#" style="color: #22322F; text-decoration: none;">実績</a>
+<a href="#" style="color: #22322F; text-decoration: none;">自社ブランド</a>
+<a href="#" style="color: #22322F; text-decoration: none;">会社情報</a>
+<span class="en" style="font-size: 14px; color: #45524E;"><a href="#" style="color: #22322F; text-decoration: none; font-weight: 600;">JP</a> / <a href="#" style="color: #45524E; text-decoration: none;">EN</a></span>
+<a href="#" class="pill" style="background: #22322F; color: #FFFFFF; text-decoration: none; border-radius: 999px; padding: 0 8px 0 22px; min-height: 46px; display: inline-flex; align-items: center; gap: 12px; font-weight: 700;">相談する<span class="ic" aria-hidden="true" style="width: 30px; height: 30px; border-radius: 50%; background: #F4F5F1; color: #22322F; display: inline-grid; place-items: center; font-size: 14px;">→</span></a>
+</nav>
+</div>
+</header>
+<nav class="pad" aria-label="パンくず" style="max-width: 1320px; margin: 0 auto; box-sizing: border-box; padding: 8px 40px 0; font-size: 13px; color: #45524E;"><a href="#" style="color: #45524E;">トップ</a>　/　<span>お問い合わせ</span></nav><section class="pad" data-sec="fv" style="max-width: 1320px; margin: 0 auto; box-sizing: border-box; padding: 40px 40px 64px; display: flex; flex-direction: column; gap: 28px;">
+<span class="en fv-a" style="font-size: 13px; font-weight: 600; letter-spacing: 0.12em; color: #2F5A3A; text-transform: uppercase;">Contact — お問い合わせ</span>
+<h1 class="serif" style="margin: 0; font-size: clamp(34px, 4.6vw, 64px); font-weight: 800; line-height: 1.4; letter-spacing: 0.02em; color: #1B2926;"><span class="fv-l" style="display: inline-block;">お問い合わせ</span></h1>
+<p class="fv-b" style="margin: 0; max-width: 40em; color: #2E3D39; line-height: 2.1;">海外展開のご相談、お見積り、取材のご依頼はこちらから。対象国や商材が決まっていなくても構いません。</p></section><section class="pad" data-sec="steps" style="max-width: 1320px; margin: 0 auto; box-sizing: border-box; padding: 0 40px 120px;"><div class="cf" style="gap: 48px 64px; align-items: start;">
+<form aria-label="お問い合わせフォーム" style="border-top: 1px solid #22322F; min-width: 0;"><fieldset class="frow" style="gap: 8px 24px; padding: 22px 0; margin: 0; border: 0; border-bottom: 1px solid #CDD3C8; align-items: start; min-width: 0;"><legend style="float: left; font-weight: 700; font-size: 15.5px; padding: 12px 0 0;">お問い合わせの種類<span class="req">必須</span></legend><div style="display: flex; flex-wrap: wrap; gap: 10px; min-width: 0;"><label class="chip"><input type="radio" name="kind" checked>ご相談</label><label class="chip"><input type="radio" name="kind">資料請求</label><label class="chip"><input type="radio" name="kind">取材・その他</label></div></fieldset><div class="frow" style="gap: 8px 24px; padding: 22px 0; border-bottom: 1px solid #CDD3C8; align-items: start;"><label for="f-name" style="font-weight: 700; font-size: 15.5px; padding-top: 12px;">お名前<span class="req">必須</span></label><div style="min-width: 0;"><input id="f-name" class="inp" type="text" autocomplete="name" placeholder="例：山田 太郎"></div></div><div class="frow" style="gap: 8px 24px; padding: 22px 0; border-bottom: 1px solid #CDD3C8; align-items: start;"><label for="f-org" style="font-weight: 700; font-size: 15.5px; padding-top: 12px;">会社名・団体名<span class="req">必須</span></label><div style="min-width: 0;"><input id="f-org" class="inp" type="text" autocomplete="organization" placeholder="例：株式会社〇〇"></div></div><div class="frow" style="gap: 8px 24px; padding: 22px 0; border-bottom: 1px solid #CDD3C8; align-items: start;"><label for="f-mail" style="font-weight: 700; font-size: 15.5px; padding-top: 12px;">メールアドレス<span class="req">必須</span></label><div style="min-width: 0;"><input id="f-mail" class="inp" type="email" autocomplete="email" placeholder="例：name@example.com"></div></div><div class="frow" style="gap: 8px 24px; padding: 22px 0; border-bottom: 1px solid #CDD3C8; align-items: start;"><label for="f-tel" style="font-weight: 700; font-size: 15.5px; padding-top: 12px;">電話番号<span class="opt">任意</span></label><div style="min-width: 0;"><input id="f-tel" class="inp" type="tel" autocomplete="tel" placeholder="例：03-1234-5678"></div></div><fieldset class="frow" style="gap: 8px 24px; padding: 22px 0; margin: 0; border: 0; border-bottom: 1px solid #CDD3C8; align-items: start; min-width: 0;"><legend style="float: left; font-weight: 700; font-size: 15.5px; padding: 12px 0 0;">ご相談内容<span class="opt">任意</span></legend><div style="display: flex; flex-wrap: wrap; gap: 10px; min-width: 0;"><label class="chip"><input type="checkbox" name="topic">ブランドづくり</label><label class="chip"><input type="checkbox" name="topic">市場調査・戦略</label><label class="chip"><input type="checkbox" name="topic">代理店・バイヤー開拓</label><label class="chip"><input type="checkbox" name="topic">展示会・プロモーション</label><label class="chip"><input type="checkbox" name="topic">EC・Shopee・Amazon</label><label class="chip"><input type="checkbox" name="topic">VAT登録・出店手続き</label><label class="chip"><input type="checkbox" name="topic">自治体の事業</label><label class="chip"><input type="checkbox" name="topic">その他</label></div></fieldset><fieldset class="frow" style="gap: 8px 24px; padding: 22px 0; margin: 0; border: 0; border-bottom: 1px solid #CDD3C8; align-items: start; min-width: 0;"><legend style="float: left; font-weight: 700; font-size: 15.5px; padding: 12px 0 0;">対象の国・地域<span class="opt">任意</span></legend><div style="display: flex; flex-wrap: wrap; gap: 10px; min-width: 0;"><label class="chip"><input type="checkbox" name="area">中国</label><label class="chip"><input type="checkbox" name="area">台湾</label><label class="chip"><input type="checkbox" name="area">香港</label><label class="chip"><input type="checkbox" name="area">シンガポール</label><label class="chip"><input type="checkbox" name="area">その他のASEAN</label><label class="chip"><input type="checkbox" name="area">米国</label><label class="chip"><input type="checkbox" name="area">英国・EU</label><label class="chip"><input type="checkbox" name="area">未定</label></div></fieldset><div class="frow" style="gap: 8px 24px; padding: 22px 0; border-bottom: 1px solid #CDD3C8; align-items: start;"><label for="f-when" style="font-weight: 700; font-size: 15.5px; padding-top: 12px;">検討時期<span class="opt">任意</span></label><div style="min-width: 0;"><select id="f-when" class="inp"><option>選択してください</option><option>すぐに</option><option>3か月以内</option><option>半年以内</option><option>未定</option></select></div></div><div class="frow" style="gap: 8px 24px; padding: 22px 0; border-bottom: 1px solid #CDD3C8; align-items: start;"><label for="f-body" style="font-weight: 700; font-size: 15.5px; padding-top: 12px;">詳しい内容<span class="opt">任意</span></label><div style="min-width: 0;"><textarea id="f-body" class="inp" rows="6" style="min-height: 180px; resize: vertical;" placeholder="商品の内容、目指す国、これまでの取り組みなど、分かる範囲でご記入ください。"></textarea></div></div><div style="padding: 28px 0 0; display: flex; flex-direction: column; gap: 24px; align-items: flex-start;"><label style="display: inline-flex; align-items: center; gap: 10px; font-weight: 700;"><input type="checkbox" style="width: 20px; height: 20px; accent-color: #2F5A3A;"><span><a href="#">プライバシーポリシー</a>に同意する<span class="req">必須</span></span></label><button type="button" class="pill" style="font: inherit; font-weight: 700; background: #2F5A3A; color: #FFFFFF; border: 0; border-radius: 999px; padding: 0 8px 0 32px; min-height: 58px; display: inline-flex; align-items: center; gap: 16px; cursor: pointer;">送信する<span class="ic" aria-hidden="true" style="width: 42px; height: 42px; border-radius: 50%; background: #F4F5F1; color: #2F5A3A; display: inline-grid; place-items: center;">→</span></button></div></form><aside style="display: flex; flex-direction: column; gap: 20px; min-width: 0;">
+<div class="panel" style="position: relative; overflow: hidden; background: #22322F; color: #EEF2EC; border-radius: 28px; padding: 36px 32px; display: flex; flex-direction: column; gap: 20px;">
+<svg class="tmark" viewBox="0 0 64 64" aria-hidden="true" style="width: 200px; height: 200px; right: -60px; top: -70px;"><path d="M14 50C14 26 26 14 50 14" fill="none" stroke="#EEF2EC" stroke-width="3"/><circle cx="14" cy="50" r="6" fill="#EEF2EC"/><circle cx="50" cy="14" r="6" fill="none" stroke="#EEF2EC" stroke-width="3"/></svg>
+<span class="en" style="font-size: 13px; font-weight: 600; letter-spacing: 0.12em; color: #B5D0A8; text-transform: uppercase;">Before You Send</span>
+<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; font-size: 15px; line-height: 1.9;"><li style="display: flex; gap: 12px; align-items: flex-start;"><svg viewBox="0 0 20 20" aria-hidden="true" style="width: 20px; height: 20px; flex: 0 0 auto; margin-top: 4px;"><circle cx="10" cy="10" r="9" fill="none" stroke="#B5D0A8" stroke-width="1.4"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#B5D0A8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>対象国や商材が決まっていない段階でも構いません。</span></li><li style="display: flex; gap: 12px; align-items: flex-start;"><svg viewBox="0 0 20 20" aria-hidden="true" style="width: 20px; height: 20px; flex: 0 0 auto; margin-top: 4px;"><circle cx="10" cy="10" r="9" fill="none" stroke="#B5D0A8" stroke-width="1.4"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#B5D0A8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>必要なステップだけのご相談も歓迎です。</span></li><li style="display: flex; gap: 12px; align-items: flex-start;"><svg viewBox="0 0 20 20" aria-hidden="true" style="width: 20px; height: 20px; flex: 0 0 auto; margin-top: 4px;"><circle cx="10" cy="10" r="9" fill="none" stroke="#B5D0A8" stroke-width="1.4"/><path d="M6 10.5l2.6 2.6L14 7.6" fill="none" stroke="#B5D0A8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>お見積りや取材のご依頼も、こちらからどうぞ。</span></li></ul></div>
+<div class="card" style="border: 1px solid #CDD3C8; border-radius: 28px; padding: 28px 28px 30px; display: flex; flex-direction: column; gap: 14px;">
+<svg viewBox="0 0 120 88" aria-hidden="true" style="width: 96px; height: 70px;"><g fill="none" stroke="#22322F" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M34 10h40l14 14v56H34z"/><path d="M74 10v14h14"/><path d="M44 40h34M44 50h34M44 60h20"/></g><rect x="40" y="18" width="22" height="12" rx="2" fill="#2F5A3A"/><text x="51" y="27.5" text-anchor="middle" font-size="8" font-family="Instrument Sans" font-weight="600" fill="#F4F5F1">PDF</text></svg>
+<span style="font-size: 19px; font-weight: 700;">会社案内（PDF）</span><span style="font-size: 14.5px; color: #2E3D39;">サービス内容と実績をまとめた資料です。社内でのご検討にお使いください。</span>
+<a href="#" style="font-weight: 700; font-size: 14.5px;">ダウンロードする →</a></div>
+<div class="card" style="border: 1px solid #CDD3C8; border-radius: 28px; padding: 28px; display: flex; flex-direction: column; gap: 6px;"><span class="en" style="font-size: 12.5px; letter-spacing: 0.1em; color: #2F5A3A; font-weight: 600;">EMAIL</span><a href="#" style="font-size: 18px; font-weight: 700; color: #22322F; overflow-wrap: anywhere;">contact@traverse-asia.com</a><span style="font-size: 13.5px; color: #45524E;">フォームが使えない場合は、メールでも受け付けています。</span></div>
+</aside></div></section>
+<footer style="border-top: 1px solid #CDD3C8;">
+<div class="pad" style="max-width: 1320px; margin: 0 auto; padding: 56px 40px 40px; box-sizing: border-box; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px 64px; font-size: 14px; color: #2E3D39;">
+<div style="display: flex; flex-direction: column; gap: 4px;">
+<span style="font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 600; color: #22322F;">Traverse Asia</span>
+<span>Traverse Asia合同会社</span>
+<span>北海道苫小牧市有珠の沢町1-13-8</span>
+<span>contact@traverse-asia.com</span>
+</div>
+<nav aria-label="フッターメニュー" style="display: flex; flex-wrap: wrap; gap: 8px 28px; align-content: flex-start;">
+<a href="#" style="color: #2E3D39; text-decoration: none;">サービス</a>
+<a href="#" style="color: #2E3D39; text-decoration: none;">対応エリア</a>
+<a href="#" style="color: #2E3D39; text-decoration: none;">実績</a>
+<a href="#" style="color: #2E3D39; text-decoration: none;">自社ブランド</a>
+<a href="#" style="color: #2E3D39; text-decoration: none;">会社情報</a>
+<a href="#" style="color: #2E3D39; text-decoration: none;">採用情報</a>
+<a href="#" style="color: #2E3D39; text-decoration: none;">お問い合わせ</a>
+<a href="#" style="color: #2E3D39; text-decoration: none;">プライバシーポリシー</a>
+</nav>
+<span class="en" style="width: 100%; font-size: 13px; color: #45524E;">© 2026 Traverse Asia LLC</span>
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":3200}}'>
+class Component extends DCLogic {
+renderVals() {
+const open = !!(this.state && this.state.navOpen);
+return {
+navOpen: open ? 'true' : 'false',
+navCls: open ? 'open' : '',
+navLabel: open ? '閉じる' : 'メニュー',
+toggleNav: () => this.setState({ navOpen: !open })
+};
+}
+}
+</script>
+</body>
+</html>

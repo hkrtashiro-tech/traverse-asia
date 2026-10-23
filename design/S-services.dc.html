@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>Traverse Asia Services｜サービス</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&amp;family=Instrument+Sans:wght@400;500;600&amp;family=Noto+Sans+JP:wght@400;500;700&amp;family=Shippori+Mincho+B1:wght@600;800&amp;display=swap">
+<style>
+body{margin:0;background:#F4F5F1}
+a{color:#2F5A3A}a:hover{color:#1F3F28}
+.en{font-family:'Instrument Sans',sans-serif}
+.fv{display:grid;grid-template-columns:minmax(0,11fr) minmax(0,10fr)}
+.serif{font-family:'Shippori Mincho B1','Hiragino Mincho ProN','Yu Mincho',serif}
+.fv-ph{position:relative;padding:0 0 64px 56px}
+.fv-ins{position:absolute;left:0;bottom:0;width:34%;border:8px solid #F4F5F1;border-radius:20px;overflow:hidden;background:#F4F5F1}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.who{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.why{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.maprow{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr)}
+.flow{display:grid;grid-template-columns:120px minmax(0,1fr)}
+.case{display:grid;grid-template-columns:132px 170px minmax(0,1fr) 220px}
+.ph-ph{background:repeating-linear-gradient(135deg,#E9ECE5 0 10px,#E2E6DE 10px 20px);display:grid;place-items:center;text-align:center;color:#45524E;font-size:12.5px;font-weight:700;line-height:1.6;padding:12px;box-sizing:border-box}
+.ph-ph small{display:block;font-weight:400;font-size:11.5px}
+.whoart{flex:1 1 420px;min-width:0;max-width:520px}
+.spot{display:block;width:96px;height:64px;margin-bottom:4px}
+.tmark{position:absolute;right:-50px;top:-70px;width:360px;height:360px;opacity:.07;pointer-events:none}
+.mk{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+.vt{writing-mode:vertical-rl;text-orientation:mixed;font-feature-settings:"vpal"}
+.menu-btn{display:none}
+h1,h2,h3{font-feature-settings:"palt"}
+.ml{font-family:'Noto Sans JP',sans-serif;font-size:16px;font-weight:700;paint-order:stroke;stroke:#F4F5F1;stroke-width:5px;stroke-linejoin:round}
+.ms{font-family:'Instrument Sans',sans-serif;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;fill:#45524E;paint-order:stroke;stroke:#F4F5F1;stroke-width:4px;stroke-linejoin:round}
+.mg{font-size:11px}
+.st>span:not(.arw),.st>a{margin-left:14px;margin-right:14px}
+.arw{position:absolute;right:-21px;top:120px;z-index:2;width:22px;height:22px;border-radius:50%;background:#F4F5F1;border:1px solid #22322F;color:#22322F;display:grid;place-items:center;font-size:11px;box-sizing:border-box}
+@media (max-width:1024px){
+.fv,.maprow{grid-template-columns:minmax(0,1fr)}
+.stats,.steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+.who,.why{grid-template-columns:minmax(0,1fr)}
+.case{grid-template-columns:132px minmax(0,1fr)}.case>.cs-tag{display:none}
+.arw{display:none}
+}
+@media (max-width:640px){
+.fv-ph{padding:0 0 40px 28px}
+.fv-ins{width:40%;border-width:6px}
+.stats,.steps,.mk{grid-template-columns:minmax(0,1fr)}
+.flow{grid-template-columns:minmax(0,1fr)}
+.vt{writing-mode:horizontal-tb}
+.hide-sm,.ms,.mg{display:none}
+.ml{font-size:28px;stroke-width:7px}
+.menu-btn{display:inline-flex}
+.nav{display:none!important}
+.nav.open{display:flex!important;width:100%;flex-direction:column;align-items:flex-start;gap:4px;padding:12px 0 8px;font-size:17px!important}
+.pad{padding-left:20px!important;padding-right:20px!important}
+.panel{padding-left:24px!important;padding-right:24px!important}
+}
+.hero{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
+.pnav{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.g4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.g5{display:grid;grid-template-columns:repeat(5,minmax(0,1fr))}
+.svc{display:grid;grid-template-columns:52px minmax(0,5fr) minmax(0,7fr)}
+.sec2{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr)}
+.cr{display:grid;grid-template-columns:132px minmax(0,1fr) 220px}
+@media (max-width:1024px){.hero,.sec2{grid-template-columns:minmax(0,1fr)}.g4,.g5,.pnav{grid-template-columns:repeat(2,minmax(0,1fr))}.g3{grid-template-columns:minmax(0,1fr)}.cr{grid-template-columns:132px minmax(0,1fr)}.cr>.cr-tag{display:none}}
+@media (max-width:640px){.g2,.g4,.g5{grid-template-columns:minmax(0,1fr)}.svc{grid-template-columns:52px minmax(0,1fr)}.svc>span:first-child{grid-row:span 2}.svc>.svc-d{grid-column:2}.cr{grid-template-columns:96px minmax(0,1fr)}.cr img,.cr .ph-ph,.cr .thumb{width:96px!important}}
+</style>
+</helmet>
+<div style="background: #F4F5F1; color: #22322F; font-family: 'Noto Sans JP', 'Hiragino Sans', 'Yu Gothic', sans-serif; font-size: 16px; line-height: 2; letter-spacing: 0.02em;">
+<header class="site-header">
+<div class="pad hdr-in" style="max-width: 1320px; margin: 0 auto; padding: 20px 40px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 32px; box-sizing: border-box;">
+<a href="#" style="text-decoration: none; color: #22322F; display: inline-flex; align-items: baseline; gap: 12px; margin-right: auto;"><span style="font-family: 'Cormorant Garamond', serif; font-size: 27px; font-weight: 600; letter-spacing: 0;">Traverse Asia</span><span class="en hide-sm" style="font-size: 12px; letter-spacing: 0.14em; color: #45524E;">JAPAN TO ASIA</span></a>
+<button class="menu-btn" type="button" aria-expanded="{{navOpen}}" aria-controls="c-nav" onClick="{{toggleNav}}" style="font: inherit; font-size: 14px; font-weight: 700; background: transparent; border: 1px solid #22322F; border-radius: 999px; color: #22322F; padding: 0 20px; min-height: 44px; align-items: center; cursor: pointer;">{{navLabel}}</button>
+<nav id="c-nav" class="nav {{navCls}}" aria-label="メインメニュー" style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px 28px; font-size: 14.5px;">
+<a href="#" style="color: #22322F; text-decoration: none;">サービス</a>
+<a href="#" style="color: #22322F; text-decoration: none;">対応エリア</a>
+<a href="#" style="color: #22322F; text-decoration: none;">実績</a>
+<a href="#" style="color: #22322F; text-decoration: none;">自社ブランド</a>
+<a href="#" style="color: #22322F; text-decoration: none;">会社情報</a>
+<span class="en" style="font-size: 14px; color: #45524E;"><a href="#" style="color: #22322F; text-decoration: none; font-weight: 600;">JP</a> / <a href="#" style="color: #45524E; text-decoration: none;">EN</a></span>
+<a href="#" class="pill" style="background: #22322F; color: #FFFFFF; text-decoration: none; border-radius: 999px; padding: 0 8px 0 22px; min-height: 46px; display: inline-flex; align-items: center; gap: 12px; font-weight: 700;">相談する<span class="ic" aria-hidden="true" style="width: 30px; height: 30px; border-radius: 50%; background: #F4F5F1; color: #22322F; display: inline-grid; place-items: center; font-size: 14px;">→</span></a>
+</nav>
+</div>
+</header>
+<nav class="pad" aria-label="パンくず" style="max-width: 1320px; margin: 0 auto; box-sizing: border-box; padding: 8px 40px 0; font-size: 13px; color: #45524E;"><a href="#" style="color: #45524E;">トップ</a>　/　<span>サービス</span></nav><section class="hero pad" data-sec="fv" style="max-width: 1320px; margin: 0 auto; box-sizing: border-box; padding: 40px 40px 120px; gap: 48px 72px; align-items: center; grid-template-columns: minmax(0,6fr) minmax(0,5fr);">
+<div style="display: flex; flex-direction: column; gap: 32px; min-width: 0;">
+<span class="en fv-a" style="font-size: 13px; font-weight: 600; letter-spacing: 0.12em; color: #2F5A3A; text-transform: uppercase;">Services — サービス</span>
+<h1 class="serif" style="margin: 0; font-size: clamp(34px, 4.6vw, 64px); font-weight: 800; line-height: 1.4; letter-spacing: 0.02em; color: #1B2926;"><span class="fv-l" style="display: inline-block;">つくる。設計する。</span><span class="fv-l" style="display: inline-block;">つなぐ。売る。</span></h1>
+<p class="fv-b" style="margin: 0; max-width: 32em; color: #2E3D39; line-height: 2.1;">「つくる」から「届ける」「売る」まで。海外事業の段階に合わせて、必要な機能を組み合わせて提供します。必要なステップだけのご依頼や、途中からのご相談も歓迎です。</p>
+<div class="fv-c" style="display: flex; flex-wrap: wrap; gap: 12px;"><a href="#" class="pill" style="background: #2F5A3A; color: #FFFFFF; text-decoration: none; border-radius: 999px; padding: 0 8px 0 26px; min-height: 54px; display: inline-flex; align-items: center; gap: 14px; font-weight: 700;">相談する<span class="ic" aria-hidden="true" style="width: 38px; height: 38px; border-radius: 50%; background: #F4F5F1; color: #2F5A3A; display: inline-grid; place-items: center;">→</span></a><a href="#" class="pill" style="background: transparent; color: #22322F; text-decoration: none; border-radius: 999px; padding: 0 26px; min-height: 54px; display: inline-flex; align-items: center; font-weight: 700; border: 1px solid #22322F;">課題から探す</a></div>
+</div>
+<figure class="rv" style="margin: 0; min-width: 0;">
+<svg viewBox="0 0 520 380" role="img" aria-label="ブランドづくりから販売まで、ひとつのチームで支えることを表すイラスト" style="width: 100%; height: auto; display: block;">
+<defs><pattern id="bpg" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#DCE1D6" stroke-width="1"/></pattern></defs>
+<rect x="0.5" y="0.5" width="519" height="379" rx="20" fill="#EEF1EA" stroke="#CDD3C8"/>
+<rect x="20" y="20" width="480" height="340" fill="url(#bpg)"/>
+<g font-family="Instrument Sans, sans-serif" font-size="10.5" letter-spacing="1.2" fill="#45524E"><text x="32" y="44">ONE TEAM — BRAND TO SALES</text><text x="488" y="44" text-anchor="end">TRAVERSE ASIA</text></g>
+<path d="M84 222 C130 222 140 148 190 148 C240 148 250 250 300 250 C350 250 360 170 404 170" fill="none" stroke="#22322F" stroke-width="1.4" stroke-dasharray="5 5"/>
+<path d="M436 158 C452 140 462 118 470 96" fill="none" stroke="#2F5A3A" stroke-width="2"/><path d="M462 100 L471 92 L475 104" fill="none" stroke="#2F5A3A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<g font-family="Noto Sans JP, sans-serif">
+<g transform="translate(84 222)"><circle r="32" fill="#F4F5F1" stroke="#22322F" stroke-width="1.4"/><g fill="none" stroke="#22322F" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M-10 7V-9H10V7Z M-10 -2H10"/></g><text y="-44" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="11" letter-spacing="1" fill="#2F5A3A">01 CREATE</text><text y="56" text-anchor="middle" font-size="14" font-weight="700" fill="#22322F">ブランド</text></g><g transform="translate(190 148)"><circle r="32" fill="#F4F5F1" stroke="#22322F" stroke-width="1.4"/><g fill="none" stroke="#22322F" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle r="11"/><path d="M-11 0H11M0 -11C6 -4 6 4 0 11C-6 4 -6 -4 0 -11"/></g><text y="-44" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="11" letter-spacing="1" fill="#2F5A3A">02 DESIGN</text><text y="56" text-anchor="middle" font-size="14" font-weight="700" fill="#22322F">市場</text></g><g transform="translate(300 250)"><circle r="32" fill="#F4F5F1" stroke="#22322F" stroke-width="1.4"/><g fill="none" stroke="#22322F" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="-7" r="5"/><circle cx="8" r="5"/><path d="M-2 0H3"/></g><text y="-44" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="11" letter-spacing="1" fill="#2F5A3A">03 CONNECT</text><text y="56" text-anchor="middle" font-size="14" font-weight="700" fill="#22322F">現地パートナー</text></g><g transform="translate(404 170)"><circle r="32" fill="#2F5A3A" stroke="#22322F" stroke-width="1.4"/><g fill="none" stroke="#F4F5F1" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M-10 -4H10L8 10H-8Z M-5 -4C-5 -12 5 -12 5 -4"/></g><text y="-44" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="11" letter-spacing="1" fill="#2F5A3A">04 SELL</text><text y="56" text-anchor="middle" font-size="14" font-weight="700" fill="#22322F">販売</text></g>
+<text x="478" y="76" text-anchor="end" font-size="14" font-weight="700" fill="#2F5A3A">海外の売上</text>
+<text x="40" y="340" font-size="12" fill="#45524E">必要なところから、販売まで伴走します。</text>
+</g>
+</svg>
+</figure>
+</section><section class="pad" data-sec="steps" style="max-width: 1320px; margin: 0 auto; box-sizing: border-box; padding: 0 40px 120px; display: flex; flex-direction: column; gap: 40px;"><div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 20px 64px;"><div style="display: flex; flex-direction: column; gap: 14px;"><span class="en" style="font-size: 13px; font-weight: 600; letter-spacing: 0.12em; color: #2F5A3A; text-transform: uppercase;"><svg viewBox="0 0 64 64" aria-hidden="true" style="width: 14px; height: 14px; margin-right: 8px; vertical-align: -1px;"><path d="M14 50C14 26 26 14 50 14" fill="none" stroke="currentColor" stroke-width="6"/><circle cx="14" cy="50" r="9" fill="currentColor"/><circle cx="50" cy="14" r="8" fill="none" stroke="currentColor" stroke-width="6"/></svg>4 Steps</span><h2 class="rv" style="margin: 0; font-size: clamp(26px, 3vw, 40px); font-weight: 700; line-height: 1.5;"><span style="display: inline-block;">4つのステップ</span></h2></div><p style="margin: 0; max-width: 28em; color: #2E3D39;">海外事業の成長に必要な4つの機能を、一社で一貫して提供します。</p></div><div><div class="card st sec2" style="border-top: 1px solid #22322F; padding: 48px 0; gap: 32px 64px; align-items: center; grid-template-columns: minmax(0,1fr) minmax(0,1fr);"><div style="min-width: 0;"><img src="/_blob/135be8a782c45f9982984c686ca73703" alt="SHIZUNE MATCHAの抹茶缶と茶道具" style="width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: center 70%; border-radius: 24px; display: block;"></div><div style="display: flex; flex-direction: column; gap: 18px; min-width: 0; justify-content: center;">
+<span class="en" style="font-size: 13px; letter-spacing: 0.12em; color: #2F5A3A; font-weight: 600;">STEP 01 — CREATE</span>
+<span style="font-size: 24px; font-weight: 700;">ブランドをつくる</span>
+<span class="serif" style="font-size: clamp(24px, 2.4vw, 32px); font-weight: 800; line-height: 1.55; color: #1B2926;"><span style="display: inline-block;">価値を見つけ、</span><span style="display: inline-block;">伝わるブランドへ。</span></span>
+<span style="display: flex; flex-wrap: wrap; gap: 8px;"><span style="font-size: 13.5px; border: 1px solid #CDD3C8; border-radius: 999px; padding: 2px 14px; background: #F4F5F1;">ブランド戦略</span><span style="font-size: 13.5px; border: 1px solid #CDD3C8; border-radius: 999px; padding: 2px 14px; background: #F4F5F1;">コンセプト・ストーリー</span><span style="font-size: 13.5px; border: 1px solid #CDD3C8; border-radius: 999px; padding: 2px 14px; background: #F4F5F1;">ネーミング・パッケージ</span><span style="font-size: 13.5px; border: 1px solid #CDD3C8; border-radius: 999px; padding: 2px 14px; background: #F4F5F1;">多言語コンテンツ</span></span>
+<span style="margin-top: 8px;"><a href="#" class="pill" style="background: #2F5A3A; color: #FFFFFF; text-decoration: none; border-radius: 999px; padding: 0 8px 0 26px; min-height: 54px; display: inline-flex; align-items: center; gap: 14px; font-weight: 700;">詳しく見る<span class="ic" aria-hidden="true" style="width: 38px; height: 38px; border-radius: 50%; background: #F4F5F1; color: #2F5A3A; display: inline-grid; place-items: center;">→</span></a></span></div></div><div class="card st sec2" style="border-top: 1px solid #22322F; padding: 48px 0; gap: 32px 64px; align-items: center; grid-template-columns: minmax(0,1fr) minmax(0,1fr);"><div style="display: flex; flex-direction: column; gap: 18px; min-width: 0; justify-content: center;">
+<span class="en" style="font-size: 13px; letter-spacing: 0.12em; color: #2F5A3A; font-weight: 600;">STEP 02 — DESIGN THE MARKET</span>
+<span style="font-size: 24px; font-weight: 700;">市場を設計する</span>
+<span class="serif" style="font-size: clamp(24px, 2.4vw, 32px); font-weight: 800; line-height: 1.55; color: #1B2926;"><span style="display: inline-block;">売れる市場を、</span><span style="display: inline-block;">設計する。</span></span>
+<span style="display: flex; flex-wrap: wrap; gap: 8px;"><span style="font-size: 13.5px; border: 1px solid #CDD3C8; border-radius: 999px; padding: 2px 14px; background: #F4F5F1;">市場調査</span><span style="font-size: 13.5px; border: 1px solid #CDD3C8; border-radius: 999px; padding: 2px 14px; background: #F4F5F1;">海外展開戦略</span><span style="font-size: 13.5px; border: 1px solid #CDD3C8; border-radius: 999px; padding: 2px 14px; background: #F4F5F1;">価格設計</span><span style="font-size: 13.5px; border: 1px solid #CDD3C8; border-radius: 999px; padding: 2px 14px; background: #F4F5F1;">販路・輸出スキーム設計</span><span style="font-size: 13.5px; border: 1px solid #CDD3C8; border-radius: 999px; padding: 2px 14px; background: #F4F5F1;">ローンチ</span></span>
+<span style="margin-top: 8px;"><a href="#" class="pill" style="background: #2F5A3A; color: #FFFFFF; text-decoration: none; border-radius: 999px; padding: 0 8px 0 26px; min-height: 54px; display: inline-flex; align-items: center; gap: 14px; font-weight: 700;">詳しく見る<span class="ic" aria-hidden="true" style="width: 38px; height: 38px; border-radius: 50%; background: #F4F5F1; color: #2F5A3A; display: inline-grid; place-items: center;">→</span></a></span></div><div style="min-width: 0;"><img src="/_blob/27718d3341b2525cdcf17408011c1f77" alt="窓辺のデスクで考える人" style="width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: 60% center; border-radius: 24px; display: block;"></div></div><div class="card st sec2" style="border-top: 1px solid #22322F; padding: 48px 0; gap: 32px 64px; align-items: center; grid-template-columns: minmax(0,1fr) minmax(0,1fr);"><div style="min-width: 0;"><img src="/_blob/e8f381482e38d2776dab69ccafa71353" alt="シンガポールの街並み" style="width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: center 60%; border-radius: 24px; display: block;"></div><div style="display: flex; flex-direction: column; gap: 18px; min-width: 0; justify-content: center;">
+<span class="en" style="font-size: 13px; letter-spacing: 0.12em; color: #2F5A3A; font-weight: 600;">STEP 03 — CONNECT</span>
+<span style="font-size: 24px; font-weight: 700;">現地とつなぐ</span>
+<span class="serif" style="font-size: clamp(24px, 2.4vw, 32px); font-weight: 800; line-height: 1.55; color: #1B2926;"><span style="display: inline-block;">現地とつながり、</span><span style="display: inline-block;">事業を動かす。</span></span>
+<span style="display: flex; flex-wrap: wrap; gap: 8px;"><span style="font-size: 13.5px; border: 1px solid #CDD3C8; border-radius: 999px; padding: 2px 14px; background: #F4F5F1;">代理店・ディストリビューター開拓</span><span style="font-size: 13.5px; border: 1px solid #CDD3C8; border-radius: 999px; padding: 2px 14px; background: #F4F5F1;">バイヤー商談</span><span style="font-size: 13.5px; border: 1px solid #CDD3C8; border-radius: 999px; padding: 2px 14px; background: #F4F5F1;">展示会・イベント</span><span style="font-size: 13.5px; border: 1px solid #CDD3C8; border-radius: 999px; padding: 2px 14px; background: #F4F5F1;">現地プロモーション</span></span>
+<span style="margin-top: 8px;"><a href="#" class="pill" style="background: #2F5A3A; color: #FFFFFF; text-decoration: none; border-radius: 999px; padding: 0 8px 0 26px; min-height: 54px; display: inline-flex; align-items: center; gap: 14px; font-weight: 700;">詳しく見る<span class="ic" aria-hidden="true" style="width: 38px; height: 38px; border-radius: 50%; background: #F4F5F1; color: #2F5A3A; display: inline-grid; place-items: center;">→</span></a></span></div></div><div class="card st sec2" style="border-top: 1px solid #22322F; padding: 48px 0; gap: 32px 64px; align-items: center; grid-template-columns: minmax(0,1fr) minmax(0,1fr);"><div style="display: flex; flex-direction: column; gap: 18px; min-width: 0; justify-content: center;">
+<span class="en" style="font-size: 13px; letter-spacing: 0.12em; color: #2F5A3A; font-weight: 600;">STEP 04 — SELL</span>
+<span style="font-size: 24px; font-weight: 700;">実際に売る</span>
+<span class="serif" style="font-size: clamp(24px, 2.4vw, 32px); font-weight: 800; line-height: 1.55; color: #1B2926;"><span style="display: inline-block;">市場につなぐだけでなく、</span><span style="display: inline-block;">実際に売る。</span></span>
+<span style="display: flex; flex-wrap: wrap; gap: 8px;"><span style="font-size: 13.5px; border: 1px solid #CDD3C8; border-radius: 999px; padding: 2px 14px; background: #F4F5F1;">Amazon・Shopee・海外EC運営</span><span style="font-size: 13.5px; border: 1px solid #CDD3C8; border-radius: 999px; padding: 2px 14px; background: #F4F5F1;">卸・B2B</span><span style="font-size: 13.5px; border: 1px solid #CDD3C8; border-radius: 999px; padding: 2px 14px; background: #F4F5F1;">テスト販売</span><span style="font-size: 13.5px; border: 1px solid #CDD3C8; border-radius: 999px; padding: 2px 14px; background: #F4F5F1;">VAT登録・出店手続き</span></span>
+<span style="margin-top: 8px;"><a href="#" class="pill" style="background: #2F5A3A; color: #FFFFFF; text-decoration: none; border-radius: 999px; padding: 0 8px 0 26px; min-height: 54px; display: inline-flex; align-items: center; gap: 14px; font-weight: 700;">詳しく見る<span class="ic" aria-hidden="true" style="width: 38px; height: 38px; border-radius: 50%; background: #F4F5F1; color: #2F5A3A; display: inline-grid; place-items: center;">→</span></a></span></div><div style="min-width: 0;"><img src="/_blob/b4e98bf4b135e45a71cab01663a31658" alt="店頭に並ぶバッグ" style="width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: center; border-radius: 24px; display: block;"></div></div></div></section><section class="pad" data-sec="cases" style="max-width: 1320px; margin: 0 auto; box-sizing: border-box; padding: 0 40px 120px; display: flex; flex-direction: column; gap: 40px;"><div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 20px 64px;"><div style="display: flex; flex-direction: column; gap: 14px;"><span class="en" style="font-size: 13px; font-weight: 600; letter-spacing: 0.12em; color: #2F5A3A; text-transform: uppercase;"><svg viewBox="0 0 64 64" aria-hidden="true" style="width: 14px; height: 14px; margin-right: 8px; vertical-align: -1px;"><path d="M14 50C14 26 26 14 50 14" fill="none" stroke="currentColor" stroke-width="6"/><circle cx="14" cy="50" r="9" fill="currentColor"/><circle cx="50" cy="14" r="8" fill="none" stroke="currentColor" stroke-width="6"/></svg>Find by Challenge</span><h2 class="rv" style="margin: 0; font-size: clamp(26px, 3vw, 40px); font-weight: 700; line-height: 1.5;"><span style="display: inline-block;">課題から探す</span></h2></div></div><div style="border-top: 1px solid #22322F;"><a href="#" class="row" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 24px; padding: 22px 12px; border-bottom: 1px solid #CDD3C8; color: #22322F; text-decoration: none;"><span style="font-size: 17px; font-weight: 700;">海外向けのブランドやパッケージをつくりたい</span><span style="display: inline-flex; align-items: center; gap: 12px;"><span class="en" style="font-size: 12.5px; letter-spacing: 0.1em; color: #2F5A3A; font-weight: 600;">01 CREATE</span><span style="font-size: 14px; color: #2E3D39;">ブランドをつくる</span><span class="ic" aria-hidden="true" style="width: 32px; height: 32px; border-radius: 50%; border: 1px solid #22322F; display: inline-grid; place-items: center;">→</span></span></a><a href="#" class="row" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 24px; padding: 22px 12px; border-bottom: 1px solid #CDD3C8; color: #22322F; text-decoration: none;"><span style="font-size: 17px; font-weight: 700;">進出先の国を決めたい、市場を調べたい</span><span style="display: inline-flex; align-items: center; gap: 12px;"><span class="en" style="font-size: 12.5px; letter-spacing: 0.1em; color: #2F5A3A; font-weight: 600;">02 DESIGN THE MARKET</span><span style="font-size: 14px; color: #2E3D39;">市場を設計する</span><span class="ic" aria-hidden="true" style="width: 32px; height: 32px; border-radius: 50%; border: 1px solid #22322F; display: inline-grid; place-items: center;">→</span></span></a><a href="#" class="row" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 24px; padding: 22px 12px; border-bottom: 1px solid #CDD3C8; color: #22322F; text-decoration: none;"><span style="font-size: 17px; font-weight: 700;">補助金を使って海外展開したい</span><span style="display: inline-flex; align-items: center; gap: 12px;"><span class="en" style="font-size: 12.5px; letter-spacing: 0.1em; color: #2F5A3A; font-weight: 600;">02 DESIGN THE MARKET</span><span style="font-size: 14px; color: #2E3D39;">市場を設計する</span><span class="ic" aria-hidden="true" style="width: 32px; height: 32px; border-radius: 50%; border: 1px solid #22322F; display: inline-grid; place-items: center;">→</span></span></a><a href="#" class="row" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 24px; padding: 22px 12px; border-bottom: 1px solid #CDD3C8; color: #22322F; text-decoration: none;"><span style="font-size: 17px; font-weight: 700;">代理店やディストリビューターを探したい</span><span style="display: inline-flex; align-items: center; gap: 12px;"><span class="en" style="font-size: 12.5px; letter-spacing: 0.1em; color: #2F5A3A; font-weight: 600;">03 CONNECT</span><span style="font-size: 14px; color: #2E3D39;">現地とつなぐ</span><span class="ic" aria-hidden="true" style="width: 32px; height: 32px; border-radius: 50%; border: 1px solid #22322F; display: inline-grid; place-items: center;">→</span></span></a><a href="#" class="row" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 24px; padding: 22px 12px; border-bottom: 1px solid #CDD3C8; color: #22322F; text-decoration: none;"><span style="font-size: 17px; font-weight: 700;">展示会・商談会に出たい、現地でPRしたい</span><span style="display: inline-flex; align-items: center; gap: 12px;"><span class="en" style="font-size: 12.5px; letter-spacing: 0.1em; color: #2F5A3A; font-weight: 600;">03 CONNECT</span><span style="font-size: 14px; color: #2E3D39;">現地とつなぐ</span><span class="ic" aria-hidden="true" style="width: 32px; height: 32px; border-radius: 50%; border: 1px solid #22322F; display: inline-grid; place-items: center;">→</span></span></a><a href="#" class="row" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 24px; padding: 22px 12px; border-bottom: 1px solid #CDD3C8; color: #22322F; text-decoration: none;"><span style="font-size: 17px; font-weight: 700;">AmazonやShopeeで売りたい</span><span style="display: inline-flex; align-items: center; gap: 12px;"><span class="en" style="font-size: 12.5px; letter-spacing: 0.1em; color: #2F5A3A; font-weight: 600;">04 SELL</span><span style="font-size: 14px; color: #2E3D39;">実際に売る</span><span class="ic" aria-hidden="true" style="width: 32px; height: 32px; border-radius: 50%; border: 1px solid #22322F; display: inline-grid; place-items: center;">→</span></span></a><a href="#" class="row" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 24px; padding: 22px 12px; border-bottom: 1px solid #CDD3C8; color: #22322F; text-decoration: none;"><span style="font-size: 17px; font-weight: 700;">英国で販売するためにVAT登録が必要</span><span style="display: inline-flex; align-items: center; gap: 12px;"><span class="en" style="font-size: 12.5px; letter-spacing: 0.1em; color: #2F5A3A; font-weight: 600;">04 SELL</span><span style="font-size: 14px; color: #2E3D39;">実際に売る</span><span class="ic" aria-hidden="true" style="width: 32px; height: 32px; border-radius: 50%; border: 1px solid #22322F; display: inline-grid; place-items: center;">→</span></span></a></div></section><section class="pad" data-sec="flow" style="max-width: 1320px; margin: 0 auto; box-sizing: border-box; padding: 0 40px 120px;"><div class="panel why-panel" style="position: relative; overflow: hidden; background: #22322F; color: #EEF2EC; border-radius: 32px; padding: 72px 56px; display: flex; flex-direction: column; gap: 48px;">
+<svg class="tmark" viewBox="0 0 64 64" aria-hidden="true" style="width: 260px; height: 260px; right: -70px; top: -90px;"><path d="M14 50C14 26 26 14 50 14" fill="none" stroke="#EEF2EC" stroke-width="3"/><circle cx="14" cy="50" r="6" fill="#EEF2EC"/><circle cx="50" cy="14" r="6" fill="none" stroke="#EEF2EC" stroke-width="3"/></svg>
+<div style="position: relative; display: flex; flex-direction: column; gap: 14px;"><span class="en" style="font-size: 13px; font-weight: 600; letter-spacing: 0.12em; color: #B5D0A8; text-transform: uppercase;"><svg viewBox="0 0 64 64" aria-hidden="true" style="width: 14px; height: 14px; margin-right: 8px; vertical-align: -1px;"><path d="M14 50C14 26 26 14 50 14" fill="none" stroke="currentColor" stroke-width="6"/><circle cx="14" cy="50" r="9" fill="currentColor"/><circle cx="50" cy="14" r="8" fill="none" stroke="currentColor" stroke-width="6"/></svg>How We Work</span><h2 class="rv" style="margin: 0; font-size: clamp(26px, 3vw, 40px); font-weight: 700; line-height: 1.5;"><span style="display: inline-block;">関わり方は、3つ。</span></h2><p style="margin: 0; max-width: 40em; color: #D6DED8;">ご予算と体制に合わせてご提案します。</p></div><div class="g3" style="gap: 32px 40px; position: relative;"><div class="wy" style="display: flex; flex-direction: column; gap: 12px; border-top: 1px solid #4A5C57; padding-top: 24px;"><span class="en" style="font-size: 26px; font-weight: 500;">Spot</span><span style="font-size: 19px; font-weight: 700;">スポット</span><span style="font-size: 14.5px; color: #D6DED8; line-height: 1.95;">市場調査、テスト販売、商談会、VAT登録など、単発のご依頼。</span></div><div class="wy" style="display: flex; flex-direction: column; gap: 12px; border-top: 1px solid #4A5C57; padding-top: 24px;"><span class="en" style="font-size: 26px; font-weight: 500;">Project</span><span style="font-size: 19px; font-weight: 700;">プロジェクト</span><span style="font-size: 14.5px; color: #D6DED8; line-height: 1.95;">ブランド開発や市場参入を、期間を決めて形にします。</span></div><div class="wy" style="display: flex; flex-direction: column; gap: 12px; border-top: 1px solid #4A5C57; padding-top: 24px;"><span class="en" style="font-size: 26px; font-weight: 500;">Partnership</span><span style="font-size: 19px; font-weight: 700;">伴走</span><span style="font-size: 14.5px; color: #D6DED8; line-height: 1.95;">海外事業部の機能を、継続して担います。</span></div></div></div></section><section class="pad" data-sec="cta" style="max-width: 1320px; margin: 0 auto; box-sizing: border-box; padding: 0 40px 120px;"><div class="cta-panel" style="position: relative; overflow: hidden; border-radius: 32px; background: #22322F; color: #FFFFFF;">
+<img class="cta-img" src="/_blob/5848c8c83db819eb497ead4799e47f22" alt="" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: right center; opacity: 0.12; mix-blend-mode: luminosity;">
+<div class="panel" style="position: relative; padding: 80px 56px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 32px 48px;"><div style="display: flex; flex-direction: column; gap: 18px; max-width: 680px;"><span class="en" style="font-size: 13px; font-weight: 600; letter-spacing: 0.12em; color: #B5D0A8;">CONTACT</span><h2 class="rv" style="margin: 0; font-size: clamp(28px, 3.4vw, 44px); font-weight: 700; line-height: 1.45;"><span style="display: inline-block;">どのステップから始めるか</span><span style="display: inline-block;">迷ったら、ご相談ください。</span></h2><p style="margin: 0; color: #E3ECDF;">対象国や商材が決まっていない段階のご相談も歓迎です。</p></div>
+<div style="display: flex; flex-wrap: wrap; gap: 12px;"><a href="#" class="pill" style="background: #FFFFFF; color: #22322F; text-decoration: none; border-radius: 999px; padding: 0 8px 0 26px; min-height: 56px; display: inline-flex; align-items: center; gap: 14px; font-weight: 700;">相談する<span class="ic" aria-hidden="true" style="width: 40px; height: 40px; border-radius: 50%; background: #22322F; color: #FFFFFF; display: inline-grid; place-items: center;">→</span></a><a href="#" class="pill" style="color: #FFFFFF; text-decoration: none; border-radius: 999px; padding: 0 26px; min-height: 56px; display: inline-flex; align-items: center; font-weight: 700; border: 1px solid #FFFFFF;">会社案内（PDF）</a></div></div></div></section>
+<footer style="border-top: 1px solid #CDD3C8;">
+<div class="pad" style="max-width: 1320px; margin: 0 auto; padding: 56px 40px 40px; box-sizing: border-box; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px 64px; font-size: 14px; color: #2E3D39;">
+<div style="display: flex; flex-direction: column; gap: 4px;">
+<span style="font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 600; color: #22322F;">Traverse Asia</span>
+<span>Traverse Asia合同会社</span>
+<span>北海道苫小牧市有珠の沢町1-13-8</span>
+<span>contact@traverse-asia.com</span>
+</div>
+<nav aria-label="フッターメニュー" style="display: flex; flex-wrap: wrap; gap: 8px 28px; align-content: flex-start;">
+<a href="#" style="color: #2E3D39; text-decoration: none;">サービス</a>
+<a href="#" style="color: #2E3D39; text-decoration: none;">対応エリア</a>
+<a href="#" style="color: #2E3D39; text-decoration: none;">実績</a>
+<a href="#" style="color: #2E3D39; text-decoration: none;">自社ブランド</a>
+<a href="#" style="color: #2E3D39; text-decoration: none;">会社情報</a>
+<a href="#" style="color: #2E3D39; text-decoration: none;">採用情報</a>
+<a href="#" style="color: #2E3D39; text-decoration: none;">お問い合わせ</a>
+<a href="#" style="color: #2E3D39; text-decoration: none;">プライバシーポリシー</a>
+</nav>
+<span class="en" style="width: 100%; font-size: 13px; color: #45524E;">© 2026 Traverse Asia LLC</span>
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":5600}}'>
+class Component extends DCLogic {
+renderVals() {
+const open = !!(this.state && this.state.navOpen);
+return {
+navOpen: open ? 'true' : 'false',
+navCls: open ? 'open' : '',
+navLabel: open ? '閉じる' : 'メニュー',
+toggleNav: () => this.setState({ navOpen: !open })
+};
+}
+}
+</script>
+</body>
+</html>

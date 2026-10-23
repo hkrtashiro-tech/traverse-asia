@@ -1,0 +1,96 @@
+/* Traverse Asia – hand-written styles: motion, article body, form. */
+:root{--e:cubic-bezier(0.22,1,0.36,1)}
+html{scroll-padding-top:90px}
+.site-header{position:sticky;top:0;z-index:50;transition:transform .6s var(--e)}
+.site-header::before{content:"";position:absolute;inset:0 0 10px 0;background:rgba(244,245,241,.86);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid rgba(205,211,200,.8);opacity:0;transition:opacity .6s var(--e)}
+.site-header .hdr-in{position:relative;transition:transform .6s var(--e)}
+.site-header.scrolled::before{opacity:1}
+.site-header.scrolled .hdr-in{transform:translateY(-5px)}
+.site-header.hidden{transform:translateY(-100%)}
+.fl-rule{position:absolute;left:0;right:0;bottom:0;height:1px;background:#CDD3C8;transform-origin:left center}
+.card{position:relative;transition:transform .6s var(--e)}
+.card::before{content:"";position:absolute;inset:0;border-radius:inherit;background:rgba(34,50,47,.045);opacity:0;transition:opacity .6s var(--e);pointer-events:none}
+.card:hover{transform:translateY(-2px)}
+.card:hover::before{opacity:1}
+.ic{transition:transform .6s var(--e)}
+.pill:hover .ic,.en-card:hover .ic{transform:translateX(4px)}
+.row{position:relative}
+.row::before{content:"";position:absolute;inset:0;background:rgba(34,50,47,.04);opacity:0;transition:opacity .6s var(--e);pointer-events:none}
+.row:hover::before{opacity:1}
+.ra{display:inline-block;transition:transform .6s var(--e)}
+.row:hover .ra{transform:translateX(4px)}
+.arw{width:20px!important;height:1px!important;border:0!important;border-radius:0!important;background:#22322F!important;right:-20px!important;top:60px!important;font-size:0!important;transform-origin:left center}
+.arw::after{content:"";position:absolute;right:-1px;top:-3px;border-left:6px solid #22322F;border-top:3.5px solid transparent;border-bottom:3.5px solid transparent}
+.ct{cursor:default}
+.map-fig .arc,.map-fig .dot,.map-fig .lab{transition:opacity .4s var(--e)}
+.map-fig[data-active] .arc{opacity:.18}
+.map-fig[data-active] .arc.on{opacity:1;stroke-width:2.4}
+.map-fig[data-active] .dot:not(.on),.map-fig[data-active] .lab:not(.on){opacity:.35}
+.ct.on span:first-child{color:#2F5A3A}
+.cta-img{transition:transform 1.6s var(--e)}
+/* ---- motion (only when JS adds .m to <html>) ---- */
+.m .a{opacity:0;transform:translateY(16px);transition:opacity .8s var(--e),transform .8s var(--e)}
+.m .in .a,.m .a.in{opacity:1;transform:none}
+.m .ax{opacity:0;transform:translateX(-8px);transition:opacity .7s var(--e),transform .7s var(--e)}
+.m .in .ax{opacity:1;transform:none}
+.m .af{opacity:0;transition:opacity .9s var(--e)}
+.m .in .af,.m .af.in{opacity:1}
+.m .fv-img{opacity:0;transform:scale(1.04);transition:opacity 1.2s var(--e),transform 1.2s var(--e)}
+.m .in .fv-img{opacity:1;transform:none}
+.m .arw,.m .fl-rule{transform:scaleX(0);transition:transform .7s var(--e)}
+.m .in .arw,.m .in .fl-rule{transform:scaleX(1)}
+.m .map-fig .arc{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .8s var(--e),opacity .4s var(--e)}
+.m .in .map-fig .arc{stroke-dashoffset:0}
+.m .map-fig .dot,.m .map-fig .lab,.m .map-fig .jp-dot{opacity:0;transition:opacity .6s var(--e)}
+.m .in .map-fig .dot,.m .in .map-fig .lab,.m .in .map-fig .jp-dot{opacity:1}
+.m .in .jp-glow{animation:glow 2.4s var(--e) .2s 1 both}
+html.pre *{transition:none!important}
+@keyframes glow{0%{opacity:0}35%{opacity:.28}100%{opacity:0}}
+.m .in .cta-img{transform:scale(1.03)}
+@media (prefers-reduced-motion:reduce){.site-header,.site-header::before,.site-header .hdr-in,.card,.card::before,.ic,.ra,.row::before,.cta-img{transition:none!important}.card:hover{transform:none}}
+
+/* ---- base ---- */
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#F4F5F1}
+img{max-width:100%}
+.skip-link{position:absolute;left:12px;top:-60px;z-index:100;background:#22322F;color:#FFFFFF;padding:8px 16px;border-radius:999px;font-weight:700;text-decoration:none}
+.skip-link:focus{top:12px}
+:focus-visible{outline:2px solid #2F5A3A;outline-offset:3px}
+.screen-reader-text{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
+
+/* ---- article body (editor content) ---- */
+.entry>*{margin:0}
+.entry p,.entry li{font-size:17px;line-height:2.25;color:#22322F}
+.entry h2{margin:24px 0 0;font-size:24px;font-weight:700;line-height:1.6;padding-top:24px;border-top:1px solid #CDD3C8;scroll-margin-top:100px}
+.entry h3{margin:16px 0 0;font-size:19px;font-weight:700;line-height:1.7}
+.entry blockquote{margin:8px 0;padding:4px 0 4px 24px;border-left:3px solid #2F5A3A;font-family:'Shippori Mincho B1','Hiragino Mincho ProN','Yu Mincho',serif;font-size:22px;font-weight:800;line-height:1.7;color:#1B2926}
+.entry blockquote p{font-size:inherit;line-height:inherit;color:inherit;margin:0}
+.entry figure{margin:16px 0;display:flex;flex-direction:column;gap:10px}
+.entry img{height:auto;border-radius:20px;display:block}
+.entry figcaption,.entry .wp-element-caption{font-size:13px;color:#45524E}
+.entry ul,.entry ol{padding-left:1.4em}
+.entry table{width:100%;border-collapse:collapse;font-size:15px}
+.entry th,.entry td{border-bottom:1px solid #CDD3C8;padding:12px 8px;text-align:left;vertical-align:top}
+.entry .wp-block-buttons a,.entry .wp-block-button__link{display:inline-flex;align-items:center;min-height:52px;padding:0 26px;border-radius:999px;background:#2F5A3A;color:#FFFFFF;text-decoration:none;font-weight:700}
+
+/* ---- pager ---- */
+.ta-pager .page-numbers{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-weight:600;border:1px solid #B9C1B5;color:#22322F;text-decoration:none;box-sizing:border-box}
+.ta-pager .page-numbers.current{background:#22322F;border-color:#22322F;color:#FFFFFF}
+.ta-pager .page-numbers.dots{border:0}
+
+/* ---- contact form (Contact Form 7) ---- */
+.ta-form{border-top:1px solid #22322F;min-width:0}
+.ta-form .chips .wpcf7-form-control{display:flex;flex-wrap:wrap;gap:10px}
+.ta-form .wpcf7-list-item{margin:0}
+.ta-form .wpcf7-list-item label{display:inline-flex;align-items:center;gap:8px;border:1px solid #B9C1B5;border-radius:999px;padding:6px 16px;font-size:14.5px;line-height:2;background:#FFFFFF;cursor:pointer}
+.ta-form .wpcf7-list-item input{accent-color:#2F5A3A;margin:0}
+.ta-form .consent .wpcf7-list-item label{border:0;background:none;padding:0;font-size:16px;font-weight:700;gap:10px}
+.ta-form .consent input{width:20px;height:20px}
+.ta-form .wpcf7-form-control-wrap{display:block}
+.ta-form .inp{width:100%;box-sizing:border-box;font:inherit;font-size:16px;color:#22322F;background:#FFFFFF;border:1px solid #B9C1B5;border-radius:12px;padding:12px 16px;min-height:52px}
+.ta-form textarea.inp{min-height:180px;resize:vertical}
+.ta-form .wpcf7-not-valid{border-color:#A3402E}
+.ta-form .wpcf7-not-valid-tip{color:#A3402E;font-size:13.5px;font-weight:700;margin-top:6px}
+.ta-form .wpcf7-response-output{margin:24px 0 0!important;padding:14px 18px!important;border-radius:12px;border-width:1px!important;font-size:15px}
+.ta-form .wpcf7-spinner{margin:0 0 0 12px}
+.ta-form .req{font-size:11.5px;font-weight:700;color:#FFFFFF;background:#2F5A3A;border-radius:4px;padding:1px 6px;margin-left:8px;vertical-align:2px}
