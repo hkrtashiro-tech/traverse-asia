@@ -23,38 +23,6 @@ function ta_pdf_url() {
 	return get_theme_mod( 'ta_pdf_url', '' ) ?: home_url( '/contact/' );
 }
 
-/**
- * Key of the design board used for the current request. It decides which
- * page stylesheet is loaded and which generated part is rendered.
- */
-function ta_view_key() {
-	if ( is_front_page() ) {
-		return 'front';
-	}
-	if ( is_404() ) {
-		return '404';
-	}
-	if ( is_singular( 'works' ) ) {
-		$slug = get_post_field( 'post_name', get_queried_object_id() );
-		return ta_part_exists( 'works/' . $slug ) ? 'work-' . $slug : 'article';
-	}
-	if ( is_post_type_archive( 'works' ) || is_tax( array( 'work_step', 'work_area' ) ) ) {
-		return 'works';
-	}
-	if ( is_page() ) {
-		$slug = get_post_field( 'post_name', get_queried_object_id() );
-		return ta_part_exists( 'pages/' . $slug ) ? $slug : 'article';
-	}
-	if ( is_singular() ) {
-		return 'article';
-	}
-	return 'news';
-}
-
-function ta_part_exists( $name ) {
-	return file_exists( TA_DIR . '/template-parts/' . $name . '.php' );
-}
-
 /** Date in the design's 2026.05.26 format. */
 function ta_date( $post = null ) {
 	return get_the_date( 'Y.m.d', $post );

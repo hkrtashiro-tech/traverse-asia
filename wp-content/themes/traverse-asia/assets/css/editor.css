@@ -1,0 +1,7 @@
+/* Block editor canvas: match the site's page background and base type. */
+.editor-styles-wrapper{background:#F4F5F1;color:#22322F;font-family:'Noto Sans JP','Hiragino Sans','Yu Gothic',sans-serif;font-size:16px;line-height:2;letter-spacing:.02em;padding:0}
+.editor-styles-wrapper .is-root-container{padding:0}
+.editor-styles-wrapper .ta-section-preview{margin-top:0!important;margin-bottom:0!important;max-width:none!important}
+.editor-styles-wrapper .ta-section-preview a,.editor-styles-wrapper .ta-section-preview button,.editor-styles-wrapper .ta-section-preview input,.editor-styles-wrapper .ta-section-preview select,.editor-styles-wrapper .ta-section-preview textarea{pointer-events:none}
+.editor-styles-wrapper .ta-call{margin:12px 0;padding:28px 20px;border:2px dashed #B9C1B5;border-radius:16px;text-align:center;color:#45524E;font-size:14px;font-weight:700;background:rgba(255,255,255,.5)}
+.editor-styles-wrapper .ta-section-preview.is-selected{outline:2px solid #2F5A3A;outline-offset:-2px}
