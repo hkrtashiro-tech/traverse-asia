@@ -14,3 +14,4 @@ require TA_DIR . '/inc/news.php';
 require TA_DIR . '/inc/works.php';
 require TA_DIR . '/inc/contact.php';
 require TA_DIR . '/inc/customizer.php';
+require TA_DIR . '/inc/site-setup.php';

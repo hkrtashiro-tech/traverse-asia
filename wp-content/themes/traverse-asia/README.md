@@ -15,14 +15,14 @@ traverse-asia.com リニューアル用のオリジナルテーマです（ク�
 | 404 | `404.php` | |
 
 - `template-parts/pages|design|works/*.php` と `assets/css/base.generated.css`、`assets/css/pages/*.css` は、デザインキャンバスの元データ（リポジトリの `design/*.dc.html`）から `python3 tools/build-theme.py` で生成しています。デザインを直したら再生成してください（直接編集すると次の生成で上書きされます）。
-- 手書きのファイル：`header.php` `footer.php` `inc/*.php` `template-parts/article.php` `template-parts/cta.php` `template-parts/contact-form.php` `assets/css/main.css` `assets/js/main.js`。
+- 手書きのファイル：`header.php` `footer.php` `inc/*.php`（初期設定は `inc/site-setup.php`） `template-parts/article.php` `template-parts/cta.php` `template-parts/contact-form.php` `assets/css/main.css` `assets/js/main.js`。
 - `news` 投稿タイプと `news_category` タクソノミーは旧テーマと同じ名前で登録しているので、既存のお知らせはURLもそのまま引き継がれます。
 
 ## 本番への導入手順
 
 1. Contact Form 7 を最新版に更新して有効化しておく。
 2. `wp-content/themes/traverse-asia` をサーバーにアップロードし、テーマを有効化する（先にステージングで確認するのがおすすめ）。
-3. `wp eval-file tools/setup-site.php` を実行する（WP-CLI が使えない場合はご相談ください）。
+3. 管理画面の「外観 → 初期設定」を開き、「初期設定を実行する」ボタンを押す（WP-CLI が使える場合は `wp eval-file tools/setup-site.php` でも同じです）。実行内容は次のとおりで、何度実行しても重複しません。
    - 足りない固定ページ（`/services/` 以下、`/public-sector/`、`/brands/shizune/`、`/contact/thanks/` など）を作成
    - 事例9件（カテゴリー「事例」）を実績 `works` に移し、新しいスラッグに変更
    - Shopee のコラム3件をカテゴリー「ブログ」に移動（`/shopee/xxx/` → `/blog/xxx/`）
