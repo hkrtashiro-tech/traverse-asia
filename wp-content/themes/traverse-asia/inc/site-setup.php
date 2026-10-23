@@ -11,6 +11,11 @@
  * new design depends on. The matching 301 redirects are in redirects-traverse-asia.csv.
  */
 
+/** A page (never a media item) by its path, e.g. 'contact/thanks'. */
+function ta_find_page( $path ) {
+	return get_page_by_path( $path, OBJECT, array( 'page' ) );
+}
+
 /** Runs the setup and returns what it did, one line per change. */
 function ta_run_site_setup() {
 	$log = array();
@@ -35,21 +40,41 @@ function ta_run_site_setup() {
 		'contact'               => 'お問い合わせ',
 		'contact/thanks'        => '送信完了',
 	);
+	// The site already has a front page; /home/ is only needed when it does not.
+	if ( 'page' === get_option( 'show_on_front' ) && get_option( 'page_on_front' ) ) {
+		unset( $ta_pages['home'] );
+	}
 	foreach ( $ta_pages as $path => $title ) {
-		if ( get_page_by_path( $path ) ) {
+		if ( ta_find_page( $path ) ) {
 			continue;
 		}
+		$slug   = basename( $path );
 		$parent = 0;
 		if ( false !== strpos( $path, '/' ) ) {
-			$parent_page = get_page_by_path( dirname( $path ) );
+			$parent_page = ta_find_page( dirname( $path ) );
 			$parent      = $parent_page ? $parent_page->ID : 0;
+		}
+		// A media item with the same name (e.g. an image called "contact") takes
+		// the URL before a page can; rename it so the page gets the address.
+		foreach ( get_posts( array( 'post_type' => 'attachment', 'name' => $slug, 'post_status' => 'inherit', 'post_parent' => $parent, 'numberposts' => -1 ) ) as $att ) {
+			wp_update_post( array( 'ID' => $att->ID, 'post_name' => $slug . '-image' ) );
+			$log[] = "同じ名前のメディア（ID：{$att->ID}）の名前を {$slug}-image に変更しました";
+		}
+		// A page with this slug may exist under the wrong parent (it was created
+		// while the parent URL was taken by media). Move it instead of duplicating.
+		$stray = get_posts( array( 'post_type' => 'page', 'name' => $slug, 'post_status' => 'any', 'numberposts' => -1 ) );
+		$stray = array_values( array_filter( $stray, fn( $c ) => $c->post_parent && 'page' !== get_post_type( $c->post_parent ) ) );
+		if ( $stray ) {
+			wp_update_post( array( 'ID' => $stray[0]->ID, 'post_parent' => $parent, 'post_name' => $slug ) );
+			$log[] = "ページの位置を直しました：/$path/";
+			continue;
 		}
 		wp_insert_post(
 			array(
 				'post_type'   => 'page',
 				'post_status' => 'publish',
 				'post_title'  => $title,
-				'post_name'   => basename( $path ),
+				'post_name'   => $slug,
 				'post_parent' => $parent,
 			)
 		);
@@ -57,11 +82,20 @@ function ta_run_site_setup() {
 	}
 	if ( 'page' !== get_option( 'show_on_front' ) || ! get_option( 'page_on_front' ) ) {
 		update_option( 'show_on_front', 'page' );
-		update_option( 'page_on_front', get_page_by_path( 'home' )->ID );
+		update_option( 'page_on_front', ta_find_page( 'home' )->ID );
 		$log[] = 'トップページ（/）の表示を設定しました';
 	}
+	// An empty /home/ page made by an earlier version of this setup duplicates the top page.
+	$home = ta_find_page( 'home' );
+	if ( $home && (int) get_option( 'page_on_front' ) !== $home->ID && '' === trim( $home->post_content ) ) {
+		wp_trash_post( $home->ID );
+		$log[] = '不要な空のページ /home/ をゴミ箱に移しました';
+	}
 	// Thanks page must not be indexed.
-	update_post_meta( get_page_by_path( 'contact/thanks' )->ID, '_ta_noindex', '1' );
+	$thanks = ta_find_page( 'contact/thanks' );
+	if ( $thanks ) {
+		update_post_meta( $thanks->ID, '_ta_noindex', '1' );
+	}
 
 	/* 2. Works ------------------------------------------------------------------ */
 	$ta_works = array(
