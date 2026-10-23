@@ -1,0 +1,16 @@
+<?php
+/**
+ * Traverse Asia theme bootstrap.
+ */
+
+define( 'TA_VERSION', '1.0.0' );
+define( 'TA_DIR', get_template_directory() );
+define( 'TA_URI', get_template_directory_uri() );
+
+require TA_DIR . '/inc/helpers.php';
+require TA_DIR . '/inc/setup.php';
+require TA_DIR . '/inc/post-types.php';
+require TA_DIR . '/inc/news.php';
+require TA_DIR . '/inc/works.php';
+require TA_DIR . '/inc/contact.php';
+require TA_DIR . '/inc/customizer.php';
