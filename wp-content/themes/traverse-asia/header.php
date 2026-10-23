@@ -19,7 +19,6 @@
 <button class="menu-btn" type="button" aria-expanded="false" aria-controls="c-nav" style="font: inherit; font-size: 14px; font-weight: 700; background: transparent; border: 1px solid #22322F; border-radius: 999px; color: #22322F; padding: 0 20px; min-height: 44px; align-items: center; cursor: pointer;">メニュー</button>
 <nav id="c-nav" class="nav" aria-label="メインメニュー" style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px 28px; font-size: 14.5px;">
 <a href="<?php echo ta_url( '/services/' ); ?>" style="color: #22322F; text-decoration: none;">サービス</a>
-<a href="<?php echo ta_url( '/#area' ); ?>" style="color: #22322F; text-decoration: none;">対応エリア</a>
 <a href="<?php echo ta_url( '/works/' ); ?>" style="color: #22322F; text-decoration: none;">実績</a>
 <a href="<?php echo ta_url( '/brands/shizune/' ); ?>" style="color: #22322F; text-decoration: none;">自社ブランド</a>
 <a href="<?php echo ta_url( '/company/' ); ?>" style="color: #22322F; text-decoration: none;">会社情報</a>
