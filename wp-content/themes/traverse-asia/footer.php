@@ -8,13 +8,7 @@
 <a href="mailto:contact@traverse-asia.com" style="color: #2E3D39; text-decoration: none;">contact@traverse-asia.com</a>
 </div>
 <nav aria-label="フッターメニュー" style="display: flex; flex-wrap: wrap; gap: 8px 28px; align-content: flex-start;">
-<a href="<?php echo ta_url( '/services/' ); ?>" style="color: #2E3D39; text-decoration: none;">サービス</a>
-<a href="<?php echo ta_url( '/works/' ); ?>" style="color: #2E3D39; text-decoration: none;">実績</a>
-<a href="<?php echo ta_url( '/brands/shizune/' ); ?>" style="color: #2E3D39; text-decoration: none;">自社ブランド</a>
-<a href="<?php echo ta_url( '/company/' ); ?>" style="color: #2E3D39; text-decoration: none;">会社情報</a>
-<a href="<?php echo ta_url( '/recruit/' ); ?>" style="color: #2E3D39; text-decoration: none;">採用情報</a>
-<a href="<?php echo ta_url( '/contact/' ); ?>" style="color: #2E3D39; text-decoration: none;">お問い合わせ</a>
-<a href="<?php echo ta_url( '/privacy-policy/' ); ?>" style="color: #2E3D39; text-decoration: none;">プライバシーポリシー</a>
+<?php ta_menu_links( 'footer', '#2E3D39' ); ?>
 </nav>
 <span class="en" style="width: 100%; font-size: 13px; color: #45524E;">© <?php echo esc_html( wp_date( 'Y' ) ); ?> Traverse Asia LLC</span>
 </div>
