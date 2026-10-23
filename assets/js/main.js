@@ -11,6 +11,14 @@
     btn.textContent = open ? '閉じる' : 'メニュー';
   });
 
+  /* links to other sites (in articles, menus …) open in a new tab */
+  document.querySelectorAll('a[href^="http"]').forEach(function (a) {
+    if (a.host && a.host !== location.host && !a.hasAttribute('target')) {
+      a.target = '_blank';
+      a.rel = (a.rel ? a.rel + ' ' : '') + 'noopener';
+    }
+  });
+
   /* Contact Form 7: go to the thanks page after a successful send */
   var form = document.querySelector('.ta-form-wrap');
   if (form) document.addEventListener('wpcf7mailsent', function () {

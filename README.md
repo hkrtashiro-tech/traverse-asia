@@ -35,3 +35,11 @@ traverse-asia.com リニューアル用のオリジナルテーマです（ク�
 4. 外観 → カスタマイズ → サイト設定 で、会社案内PDFのURLを入力する（未設定の間は「会社案内（PDF）」ボタンがお問い合わせページへ移動します）。
 5. Redirection プラグインで `redirects-traverse-asia.csv` をインポートし、既存ルール `/aboutus/ceo-message/` の転送先を `/company/#message` に変更する。
 6. フォームから試験送信し、管理者宛メールと自動返信メールが届くこと、送信後に `/contact/thanks/` に移ることを確認する（メールが届かない場合は WP Mail SMTP などで送信設定が必要です）。
+
+## テーマの更新（Git Updater）
+
+本番には Git Updater プラグインを入れ、このリポジトリの `theme-release` ブランチ（テーマフォルダだけを置いたブランチ）から更新を受け取ります。
+
+1. `style.css` の `Version` を上げてコミットする
+2. `sh tools/release-theme.sh` で `theme-release` ブランチに反映してプッシュする
+3. 本番の「ダッシュボード → 更新」で「Traverse Asia」を更新する

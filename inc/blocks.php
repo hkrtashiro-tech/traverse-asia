@@ -134,7 +134,14 @@ function ta_render_node( $n, $data ) {
 			ta_render_call( $n[1], $n[2] );
 			break;
 		case 'e':
-			echo '<' . $n[1] . ta_render_attrs( $n[2], $data ) . '>';
+			$extra = '';
+			if ( 'a' === $n[1] && isset( $n[2]['href'] ) && ! isset( $n[2]['target'] ) ) {
+				$href = is_array( $n[2]['href'] ) ? ta_link_url( $data[ $n[2]['href'][1] ] ?? '' ) : $n[2]['href'];
+				if ( ta_is_external( $href ) ) {
+					$extra = ' target="_blank" rel="noopener"';
+				}
+			}
+			echo '<' . $n[1] . ta_render_attrs( $n[2], $data ) . $extra . '>';
 			if ( ! in_array( $n[1], array( 'img', 'br', 'input', 'meta', 'hr', 'source' ), true ) ) {
 				foreach ( $n[3] as $child ) {
 					ta_render_node( $child, $data );
@@ -188,6 +195,15 @@ function ta_link_url( $v ) {
 		return home_url( $v );
 	}
 	return $v;
+}
+
+/** True for a link to another site (opened in a new tab). */
+function ta_is_external( $url ) {
+	if ( ! preg_match( '#^(https?:)?//#i', (string) $url ) ) {
+		return false;
+	}
+	$host = wp_parse_url( $url, PHP_URL_HOST );
+	return $host && strtolower( $host ) !== strtolower( (string) wp_parse_url( home_url(), PHP_URL_HOST ) );
 }
 
 /** Image field value → URL: a media library item, a full URL, or a file bundled with the theme. */
