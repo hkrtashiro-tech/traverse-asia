@@ -57,7 +57,6 @@ add_action(
 	1
 );
 
-add_filter( 'document_title_separator', fn() => '｜' );
 
 // The design has no WordPress emoji, block library or global styles on the front end.
 remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
