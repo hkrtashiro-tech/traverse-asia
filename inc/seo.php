@@ -19,12 +19,12 @@ function ta_seo_defaults() {
 		'connect'             => array( '海外の代理店・バイヤー開拓（CONNECT）', '現地で暮らし、働いてきたメンバーのネットワークで、代理店・ディストリビューター・バイヤーとの商談を設定。展示会・物産フェアの運営や、現地プロモーション、Web広告の配信も行います。' ),
 		'sell'                => array( '海外EC・販売運営（SELL）', 'Amazon・Shopeeなど海外ECの運営、卸・B2B、テスト販売、英国VAT登録まで。自社ブランドを海外で販売している経験をもとに、価格・物流・在庫・販促を含めた「売る」現場を支援します。' ),
 		'shopee'              => array( 'Shopee出店・運営代行｜東南アジア・台湾の越境EC', '東南アジア・台湾最大級のECモール「Shopee」への出店から運営まで代行。自社でシンガポール・フィリピンのストアを運営する経験をもとに、商品ページ、広告、受注・物流まで日本語で支援します。' ),
-		'uk-vat-registration' => array( '英国VAT登録代行｜5万円・日本語対応', '英国のAmazonなどで販売する日本企業向けに、英国VAT（付加価値税）の登録を5万円（税別）の定額で代行。日本人スタッフが日本語で対応し、登録完了の目安は1〜2か月です。登録後の申告もご相談ください。' ),
-		'public-sector'       => array( '自治体・公的機関の海外販路開拓・プロモーション', '地域の産品と魅力を海外の市場へ。北海道庁、在中国日本国大使館、日本政府観光局（JNTO）などの事業で、海外での商談会・物産フェアの企画運営やプロモーション、成果報告まで対応しています。' ),
-		'shizune'             => array( '自社ブランド SHIZUNE（静音）｜日本の抹茶', 'SHIZUNE（静音）は、Traverse Asiaが企画・開発・販売する抹茶ブランドです。国内の厳選された茶葉を使い、生産からパッケージングまで日本国内で行い、米国のAmazonなどで販売しています。' ),
+		'uk-vat-registration' => array( '英国VAT登録代行｜日本語対応', '英国のAmazonなどで販売する日本企業向けに、英国VAT（付加価値税）の登録を5万円（税別）の定額で代行。日本人スタッフが日本語で対応し、登録完了の目安は1〜2か月です。登録後の申告もご相談ください。' ),
+		'public-sector'       => array( '自治体・公的機関の海外販路開拓・プロモーション', '地域の産品と魅力を海外の市場へ。自治体や政府関係機関、観光関連団体の事業で、海外での商談会・物産フェアの企画運営やプロモーション、成果報告まで対応しています。' ),
+		'shizune'             => array( '自社ブランド開発｜SHIZUNE（静音）抹茶', 'SHIZUNE（静音）は、Traverse Asiaが企画・開発・販売する抹茶ブランドです。国内の厳選された茶葉を使い、生産からパッケージングまで日本国内で行い、米国のAmazonなどで販売しています。' ),
 		'company'             => array( '会社情報', 'Traverse Asia合同会社の会社情報。ミッション「日本の価値を、海外で育つ事業へ。」、代表メッセージ、海外経験の長いメンバー、沿革、会社概要をご紹介します。所在地は北海道苫小牧市です。' ),
 		'recruit'             => array( '採用情報', '日本の良いものを、一緒に海外へ。Traverse Asiaの採用情報です。現在募集中の職種はありませんが、募集を始める際はこのページとお知らせでご案内します。' ),
-		'works'               => array( '実績｜海外展開・プロモーションの事例', 'キユーピー、ポニーキャニオン、北海道庁、在中国日本国大使館、日本政府観光局（JNTO）などの海外展開・プロモーションの事例。中国・香港・台湾・東南アジアでの取り組みを、ステップや国・地域別に紹介します。' ),
+		'works'               => array( '実績｜海外展開・プロモーションの事例', '食品メーカー、エンタテインメント企業、自治体・公的機関などの海外展開・プロモーションの事例。中国・香港・台湾・東南アジアでの取り組みを、ステップや国・地域別に紹介します。' ),
 		'news'                => array( 'お知らせ・インサイト', 'Traverse Asiaのプレスリリース、お知らせ、海外展開・越境EC・Shopeeに関するコラムを掲載しています。' ),
 		'contact'             => array( 'お問い合わせ', '海外展開のご相談、お見積り、取材のご依頼はこちらから。対象国や商材が決まっていない段階のご相談も歓迎です。' ),
 		'privacy-policy'      => array( 'プライバシーポリシー', 'Traverse Asia合同会社の個人情報の取り扱いについて定めたプライバシーポリシーです。' ),
@@ -104,9 +104,9 @@ function ta_seo_description() {
 			return $defaults[ $key ][1];
 		}
 		if ( 'works' === $post->post_type ) {
-			$client = get_post_meta( $post->ID, '_ta_client', true );
-			$area   = get_post_meta( $post->ID, '_ta_area_label', true );
-			return ta_seo_trim( get_the_title( $post ) . '。' . ( $client ? $client . 'の' : '' ) . '海外展開・プロモーションの事例' . ( $area ? '（' . $area . '）' : '' ) . 'です。' );
+			// Client names stay out of search snippets.
+			$area = get_post_meta( $post->ID, '_ta_area_label', true );
+			return ta_seo_trim( get_the_title( $post ) . '。Traverse Asiaの海外展開・プロモーションの事例' . ( $area ? '（' . $area . '）' : '' ) . 'です。' );
 		}
 		if ( ! ta_has_sections( $post->post_content ) ) {
 			$text = ta_seo_trim( wp_strip_all_tags( strip_shortcodes( $post->post_content ) ) );
