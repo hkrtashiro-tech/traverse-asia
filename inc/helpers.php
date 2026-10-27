@@ -18,9 +18,9 @@ function ta_en_url() {
 	return get_theme_mod( 'ta_en_url', '' ) ?: home_url( '/' );
 }
 
-/** URL of the company brochure PDF. Set in Customizer. */
+/** URL of the company brochure PDF: the one bundled with the theme, unless Customizer names another. */
 function ta_pdf_url() {
-	return get_theme_mod( 'ta_pdf_url', '' ) ?: home_url( '/contact/' );
+	return get_theme_mod( 'ta_pdf_url', '' ) ?: TA_URI . '/assets/pdf/traverse-asia-company-profile.pdf';
 }
 
 /** Date in the design's 2026.05.26 format. */

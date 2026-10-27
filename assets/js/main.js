@@ -11,9 +11,9 @@
     btn.textContent = open ? '閉じる' : 'メニュー';
   });
 
-  /* links to other sites (in articles, menus …) open in a new tab */
+  /* links to other sites and PDFs (in articles, menus …) open in a new tab */
   document.querySelectorAll('a[href^="http"]').forEach(function (a) {
-    if (a.host && a.host !== location.host && !a.hasAttribute('target')) {
+    if (a.host && (a.host !== location.host || /\.pdf$/i.test(a.pathname)) && !a.hasAttribute('target')) {
       a.target = '_blank';
       a.rel = (a.rel ? a.rel + ' ' : '') + 'noopener';
     }
