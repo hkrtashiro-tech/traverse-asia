@@ -45,7 +45,7 @@ EXT = {'EN': "ta_en_url()", '会社案内（PDF）': "ta_pdf_url()", 'ダウン�
 def resolve(txt, board, counters):
     if txt in EXT: return ('php', EXT[txt])
     if txt in EXACT: return ('path', EXACT[txt])
-    if txt == 'contact@traverse-asia.com': return ('raw', 'mailto:contact@traverse-asia.com')
+    if txt == 'sales@traverse-asia.com': return ('raw', 'mailto:sales@traverse-asia.com')
     if txt.startswith('Amazonで見る'): return ('raw', 'https://www.amazon.com/dp/B0FR4M4KTC')
     if txt.startswith('公式サイト（shizunematcha.com）'): return ('raw', 'https://shizunematcha.com/')
     if txt == '詳しく見る →':
