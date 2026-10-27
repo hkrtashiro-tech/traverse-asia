@@ -137,7 +137,7 @@ function ta_render_node( $n, $data ) {
 			$extra = '';
 			if ( 'a' === $n[1] && isset( $n[2]['href'] ) && ! isset( $n[2]['target'] ) ) {
 				$href = is_array( $n[2]['href'] ) ? ta_link_url( $data[ $n[2]['href'][1] ] ?? '' ) : $n[2]['href'];
-				if ( ta_is_external( $href ) ) {
+				if ( ta_is_external( $href ) || preg_match( '/\.pdf($|[?#])/i', (string) $href ) ) {
 					$extra = ' target="_blank" rel="noopener"';
 				}
 			}

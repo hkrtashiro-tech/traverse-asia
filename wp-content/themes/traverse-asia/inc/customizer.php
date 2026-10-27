@@ -9,7 +9,7 @@ add_action(
 		$wp_customize->add_section( 'ta_site', array( 'title' => 'サイト設定', 'priority' => 30 ) );
 
 		$fields = array(
-			'ta_pdf_url'       => array( '会社案内PDFのURL', 'esc_url_raw', 'url' ),
+			'ta_pdf_url'       => array( '会社案内PDFのURL（空ならテーマ同梱のPDF）', 'esc_url_raw', 'url' ),
 			'ta_en_url'        => array( '英語版サイトのURL（未設定ならトップ）', 'esc_url_raw', 'url' ),
 			'ta_featured_work' => array( '実績一覧で大きく見せる実績（スラッグ）', 'sanitize_title', 'text' ),
 		);
