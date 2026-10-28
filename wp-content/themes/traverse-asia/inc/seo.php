@@ -176,3 +176,31 @@ add_action(
 		wp_add_inline_script( 'ta-seo', 'window.taSeo = ' . wp_json_encode( array( 'defaults' => $defaults, 'front' => $front, 'brand' => TA_BRAND ) ) . ';', 'before' );
 	}
 );
+
+// Pages that are not meant to be found in search stay out of wp-sitemap.xml:
+// the form thanks page (noindex) and /brands/, which only forwards to SHIZUNE.
+add_filter(
+	'wp_sitemaps_posts_query_args',
+	function ( $args, $post_type ) {
+		if ( 'page' !== $post_type ) {
+			return $args;
+		}
+		$exclude = get_posts(
+			array(
+				'post_type'   => 'page',
+				'numberposts' => -1,
+				'fields'      => 'ids',
+				'meta_key'    => '_ta_noindex',
+				'meta_value'  => '1',
+			)
+		);
+		$brands = get_page_by_path( 'brands', OBJECT, array( 'page' ) );
+		if ( $brands ) {
+			$exclude[] = $brands->ID;
+		}
+		$args['post__not_in'] = array_merge( $args['post__not_in'] ?? array(), $exclude );
+		return $args;
+	},
+	10,
+	2
+);
