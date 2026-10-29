@@ -204,3 +204,14 @@ add_filter(
 	10,
 	2
 );
+
+// The sitemap lists pages, posts, news and cases only: category/tag archives
+// forward to /news/ or /works/, and author archives are not part of the site.
+add_filter(
+	'wp_sitemaps_add_provider',
+	function ( $provider, $name ) {
+		return in_array( $name, array( 'users', 'taxonomies' ), true ) ? false : $provider;
+	},
+	10,
+	2
+);
