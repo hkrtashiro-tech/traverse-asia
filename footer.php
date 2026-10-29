@@ -4,7 +4,6 @@
 <div style="display: flex; flex-direction: column; gap: 4px;">
 <span style="font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 600; color: #22322F;">Traverse Asia</span>
 <span>Traverse Asia合同会社</span>
-<span>北海道苫小牧市有珠の沢町1-13-8</span>
 <a href="mailto:sales@traverse-asia.com" style="color: #2E3D39; text-decoration: none;">sales@traverse-asia.com</a>
 </div>
 <nav aria-label="フッターメニュー" style="display: flex; flex-wrap: wrap; gap: 8px 28px; align-content: flex-start;">
