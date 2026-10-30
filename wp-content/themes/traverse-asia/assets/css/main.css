@@ -120,3 +120,8 @@ img{max-width:100%}
 .nav-sub-panel a{padding:4px 8px}
 .nav-sub-ja{font-size:15px}
 }
+
+/* English pages: the map shows the English city names large, so the small duplicates are hidden. */
+html[lang="en"] .map-fig .ms{display:none}
+html[lang="en"] [data-sec="fv"] h1{font-size:clamp(30px,3.2vw,46px)!important;line-height:1.25!important}
+html[lang="en"] .vt{writing-mode:horizontal-tb;font-size:22px!important;line-height:1.4!important;letter-spacing:0!important}

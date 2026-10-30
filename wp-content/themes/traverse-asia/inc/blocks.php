@@ -106,7 +106,32 @@ function ta_render_section( $name, $data ) {
 	$data = array_merge( $type['defaults'], is_array( $data ) ? $data : array() );
 	ob_start();
 	ta_render_node( $type['tree'], $data );
-	return ob_get_clean();
+	$html = ob_get_clean();
+	return ta_is_en() ? strtr( $html, ta_en_fixed_texts() ) : $html;
+}
+
+/** Japanese text fixed in the design (illustrations, labels for screen readers) and its English. */
+function ta_en_fixed_texts() {
+	return array(
+		'ブランドづくりから販売まで、ひとつのチームで支えることを表すイラスト' => 'Illustration: one team from brand building to sales',
+		'>ブランド<'          => '>Brand<',
+		'>市場<'            => '>Market<',
+		'>現地パートナー<'       => '>Local partners<',
+		'>販売<'            => '>Sales<',
+		'>海外の売上<'         => '>Overseas sales<',
+		'必要なところから、販売まで伴走します。' => 'We support you where needed, all the way to sales.',
+		'日本から北京、台北、香港、マニラ、ホーチミン、バンコク、シンガポールへ伸びる航路の図' => 'Map of routes from Japan to Beijing, Taipei, Hong Kong, Manila, Ho Chi Minh City, Bangkok and Singapore',
+		'日本から北京、台北、香港、マニラ、ホーチミン、バンコク、シンガポールへ伸びる航路' => 'Routes from Japan to Beijing, Taipei, Hong Kong, Manila, Ho Chi Minh City, Bangkok and Singapore',
+		'>日本<'            => '>Japan<',
+		'>北京<'            => '>Beijing<',
+		'>台北<'            => '>Taipei<',
+		'>香港<'            => '>Hong Kong<',
+		'>マニラ<'           => '>Manila<',
+		'>ホーチミン<'         => '>Ho Chi Minh<',
+		'>バンコク<'          => '>Bangkok<',
+		'>シンガポール<'        => '>Singapore<',
+		'サービスの4つのステップ'   => 'The four service steps',
+	);
 }
 
 function ta_render_node( $n, $data ) {
@@ -121,11 +146,14 @@ function ta_render_node( $n, $data ) {
 			echo wp_kses_post( (string) ( $data[ $n[1] ] ?? '' ) );
 			break;
 		case 'l':
+			// Japanese lines sit side by side; English lines need a space between words.
+			$lines = array();
 			foreach ( preg_split( '/\r?\n/', (string) ( $data[ $n[1] ] ?? '' ) ) as $line ) {
 				if ( '' !== trim( $line ) ) {
-					echo '<span' . ta_render_attrs( $n[2], $data ) . '>' . esc_html( $line ) . '</span>';
+					$lines[] = '<span' . ta_render_attrs( $n[2], $data ) . '>' . esc_html( $line ) . '</span>';
 				}
 			}
+			echo implode( ta_is_en() ? ' ' : '', $lines ); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped above.
 			break;
 		case 'x':
 			echo $n[1]; // phpcs:ignore WordPress.Security.EscapeOutput -- fixed SVG from the theme.
@@ -246,6 +274,9 @@ function ta_auto_breadcrumb( $label = '' ) {
 		$label = $label ?: 'お知らせ・インサイト';
 	} elseif ( is_singular() ) {
 		foreach ( array_reverse( get_post_ancestors( get_queried_object_id() ) ) as $ancestor ) {
+			if ( 'en' === get_page_uri( $ancestor ) ) {
+				continue; // the English home is the first crumb already
+			}
 			$trail[] = array( get_the_title( $ancestor ), get_permalink( $ancestor ) );
 		}
 	}

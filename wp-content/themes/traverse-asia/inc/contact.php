@@ -7,12 +7,12 @@
 // The form template is hand-written HTML; CF7 must not add <p>/<br>.
 add_filter( 'wpcf7_autop_or_not', '__return_false' );
 
-/** ID of the CF7 contact form chosen in Customizer, if CF7 is active. */
+/** ID of the CF7 contact form for the current language (Japanese or English), if CF7 is active. */
 function ta_contact_form_id() {
 	if ( ! function_exists( 'wpcf7_contact_form' ) ) {
 		return 0;
 	}
-	$id = (int) get_theme_mod( 'ta_cf7_id', 0 );
+	$id = (int) get_theme_mod( ta_is_en() ? 'ta_cf7_id_en' : 'ta_cf7_id', 0 );
 	return ( $id && wpcf7_contact_form( $id ) ) ? $id : 0;
 }
 
