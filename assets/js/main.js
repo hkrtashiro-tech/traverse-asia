@@ -8,7 +8,7 @@
   if (btn && nav) btn.addEventListener('click', function () {
     var open = nav.classList.toggle('open');
     btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    btn.textContent = open ? '閉じる' : 'メニュー';
+    btn.textContent = btn.getAttribute(open ? 'data-open' : 'data-closed');
   });
 
   /* links to other sites and PDFs (in articles, menus …) open in a new tab */

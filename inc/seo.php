@@ -28,6 +28,17 @@ function ta_seo_defaults() {
 		'news'                => array( 'お知らせ・インサイト', 'Traverse Asiaのプレスリリース、お知らせ、海外展開・越境EC・Shopeeに関するコラムを掲載しています。' ),
 		'contact'             => array( 'お問い合わせ', '海外展開のご相談、お見積り、取材のご依頼はこちらから。対象国や商材が決まっていない段階のご相談も歓迎です。' ),
 		'privacy-policy'      => array( 'プライバシーポリシー', 'Traverse Asia合同会社の個人情報の取り扱いについて定めたプライバシーポリシーです。' ),
+		// English pages (keys are page paths).
+		'en'                        => array( 'Traverse Asia | Japanese products and brands for Asian markets', 'Traverse Asia connects Japanese products and brands with distributors, buyers and retailers in China, Taiwan, Hong Kong and Southeast Asia — from brand building and market design to local partners and e-commerce sales.' ),
+		'en/services'               => array( 'Services', 'Four steps for overseas growth — create the brand, design the market, connect locally and sell — delivered by one team. Engage us for a single step, or join midway.' ),
+		'en/services/create'        => array( 'Brand building for overseas markets (CREATE)', 'Brand strategy, concept and story, naming, packaging and multilingual content, designed from the viewpoint of overseas markets and consumers.' ),
+		'en/services/market-design' => array( 'Market research and go-to-market strategy (DESIGN THE MARKET)', 'Which country, which channel, at what price. Market research, go-to-market strategy, pricing and export scheme design through to launch.' ),
+		'en/services/connect'       => array( 'Distributors, buyers and local partners (CONNECT)', 'Meetings with distributors, buyers and local companies across Asia, plus trade shows, events and local promotion — through networks built in Beijing, Hong Kong and Singapore.' ),
+		'en/services/sell'          => array( 'E-commerce, wholesale and retail sales (SELL)', 'Amazon, Shopee and cross-border e-commerce, wholesale and B2B channels and test sales — from a team that sells its own brand overseas.' ),
+		'en/works'                  => array( 'Works | Overseas expansion and promotion case studies', 'Case studies of overseas expansion and promotion in China, Hong Kong, Taiwan and Southeast Asia, from brand building and e-commerce to trade fairs and influencer campaigns.' ),
+		'en/shizune'                => array( 'SHIZUNE matcha | Our own brand', 'SHIZUNE is a Japanese matcha brand planned, developed and sold by Traverse Asia: additive-free matcha from Shizuoka, produced and packed in Japan. Wholesale inquiries welcome.' ),
+		'en/about'                  => array( 'About', 'About Traverse Asia LLC: our mission, message from the CEO, team, history and company profile.' ),
+		'en/contact'                => array( 'Contact', 'Contact Traverse Asia about partnerships, distributing Japanese products, SHIZUNE wholesale, quotes or media requests.' ),
 	);
 }
 
@@ -62,7 +73,7 @@ function ta_seo_key() {
 		return 'news';
 	}
 	if ( is_page() ) {
-		return get_post_field( 'post_name', get_queried_object_id() );
+		return ta_is_en() ? get_page_uri( get_queried_object_id() ) : get_post_field( 'post_name', get_queried_object_id() );
 	}
 	return '';
 }
@@ -72,8 +83,8 @@ function ta_seo_title() {
 	$defaults = ta_seo_defaults();
 	$key      = ta_seo_key();
 	$custom   = is_singular() ? trim( (string) get_post_meta( get_queried_object_id(), '_ta_seo_title', true ) ) : '';
-	if ( 'front' === $key ) {
-		return $custom ?: $defaults['front'][0];
+	if ( 'front' === $key || 'en' === $key ) {
+		return $custom ?: $defaults[ $key ][0];
 	}
 	if ( $custom ) {
 		$title = $custom;
@@ -88,7 +99,7 @@ function ta_seo_title() {
 	} else {
 		$title = wp_strip_all_tags( get_the_archive_title() );
 	}
-	return $title . '｜' . TA_BRAND;
+	return $title . ( ta_is_en() ? ' | ' : '｜' ) . TA_BRAND;
 }
 
 /** Meta description for the current request. */
@@ -118,7 +129,7 @@ function ta_seo_description() {
 	if ( isset( $defaults[ $key ] ) ) {
 		return $defaults[ $key ][1];
 	}
-	return $defaults['front'][1];
+	return ta_is_en() ? $defaults['en'][1] : $defaults['front'][1];
 }
 
 function ta_seo_trim( $text ) {
@@ -147,13 +158,13 @@ add_action(
 		$url   = is_singular() ? get_permalink( get_queried_object_id() ) : home_url( add_query_arg( array() ) );
 		$tags  = array(
 			array( 'name', 'description', $desc ),
-			array( 'property', 'og:type', is_front_page() ? 'website' : 'article' ),
+			array( 'property', 'og:type', ( is_front_page() || 'en' === ta_seo_key() ) ? 'website' : 'article' ),
 			array( 'property', 'og:site_name', TA_BRAND ),
 			array( 'property', 'og:title', $title ),
 			array( 'property', 'og:description', $desc ),
 			array( 'property', 'og:url', $url ),
 			array( 'property', 'og:image', ta_seo_image() ),
-			array( 'property', 'og:locale', 'ja_JP' ),
+			array( 'property', 'og:locale', ta_is_en() ? 'en_US' : 'ja_JP' ),
 			array( 'name', 'twitter:card', 'summary_large_image' ),
 		);
 		foreach ( $tags as $t ) {
@@ -173,7 +184,14 @@ add_action(
 			$defaults[ $key ] = $d[0];
 		}
 		$front = (int) get_option( 'page_on_front' );
-		wp_add_inline_script( 'ta-seo', 'window.taSeo = ' . wp_json_encode( array( 'defaults' => $defaults, 'front' => $front, 'brand' => TA_BRAND ) ) . ';', 'before' );
+		// English pages are looked up by their path (en/…), Japanese ones by slug.
+		$post = get_post();
+		$key  = '';
+		if ( $post && 'page' === $post->post_type ) {
+			$uri = get_page_uri( $post );
+			$key = ( 'en' === $uri || 0 === strpos( (string) $uri, 'en/' ) ) ? $uri : '';
+		}
+		wp_add_inline_script( 'ta-seo', 'window.taSeo = ' . wp_json_encode( array( 'defaults' => $defaults, 'front' => $front, 'brand' => TA_BRAND, 'key' => $key ) ) . ';', 'before' );
 	}
 );
 

@@ -199,6 +199,89 @@ function ta_run_site_setup() {
 		$log[] = "お問い合わせフォームを作成して設定しました（ID：{$form_id}）";
 	}
 
+	// English form (used on /en/contact/).
+	$en_form_id = (int) get_theme_mod( 'ta_cf7_id_en', 0 );
+	if ( class_exists( 'WPCF7_ContactForm' ) && ( ! $en_form_id || ! wpcf7_contact_form( $en_form_id ) ) ) {
+		switch_to_locale( 'en_US' ); // CF7's own messages (validation, sent …) in English
+		$messages = array();
+		foreach ( wpcf7_messages() as $key => $message ) {
+			$messages[ $key ] = $message['default'];
+		}
+		restore_previous_locale();
+		$form = WPCF7_ContactForm::get_template( array( 'title' => 'Contact (English site)' ) );
+		$form->set_properties(
+			array(
+				'form'     => file_get_contents( get_template_directory() . '/cf7/contact-form-en.html' ),
+				'mail'     => array(
+					'active'             => true,
+					'subject'            => '[Traverse Asia EN] 英語サイトからのお問い合わせ：[inquiry-type]（[your-org] [your-name]）',
+					'sender'             => 'Traverse Asia <wordpress@[_site_domain]>',
+					'recipient'          => '[_site_admin_email]',
+					'body'               => "Inquiry type: [inquiry-type]\nName: [your-name]\nCompany: [your-org]\nEmail: [your-email]\nCountry / region: [your-country]\nInterested in: [topics]\n\nMessage:\n[your-message]\n\n--\nSent from [_site_url]/en/contact/",
+					'additional_headers' => 'Reply-To: [your-email]',
+					'attachments'        => '',
+					'use_html'           => false,
+					'exclude_blank'      => true,
+				),
+				'mail_2'   => array(
+					'active'             => true,
+					'subject'            => 'Traverse Asia: we have received your message',
+					'sender'             => 'Traverse Asia <wordpress@[_site_domain]>',
+					'recipient'          => '[your-email]',
+					'body'               => "Dear [your-name],\n\nThank you for contacting Traverse Asia. We have received your message and will reply after reviewing it.\n\nInquiry type: [inquiry-type]\nCompany: [your-org]\nInterested in: [topics]\n\nMessage:\n[your-message]\n\n--\nTraverse Asia LLC\nsales@traverse-asia.com\n[_site_url]/en/",
+					'additional_headers' => 'Reply-To: sales@traverse-asia.com',
+					'attachments'        => '',
+					'use_html'           => false,
+					'exclude_blank'      => true,
+				),
+				'messages' => $messages,
+			)
+		);
+		$form->save();
+		set_theme_mod( 'ta_cf7_id_en', $form->id() );
+		$log[] = '英語版のお問い合わせフォームを作成しました（ID：' . $form->id() . '）';
+	}
+
+	/* English pages ----------------------------------------------------------------- */
+	// Created as drafts so they can be checked before publishing; existing pages are left alone.
+	$en_pages = array(
+		'en'                        => 'Home',
+		'en/services'               => 'Services',
+		'en/services/create'        => 'Create the brand',
+		'en/services/market-design' => 'Design the market',
+		'en/services/connect'       => 'Connect locally',
+		'en/services/sell'          => 'Sell for real',
+		'en/works'                  => 'Works',
+		'en/shizune'                => 'SHIZUNE',
+		'en/about'                  => 'About',
+		'en/contact'                => 'Contact',
+		'en/contact/thanks'         => 'Thank you',
+	);
+	foreach ( $en_pages as $path => $title ) {
+		if ( get_page_by_path( $path, OBJECT, array( 'page' ) ) ) {
+			continue;
+		}
+		$parent = 0;
+		if ( false !== strpos( $path, '/' ) ) {
+			$parent_page = get_page_by_path( dirname( $path ), OBJECT, array( 'page' ) );
+			$parent      = $parent_page ? $parent_page->ID : 0;
+		}
+		$id = wp_insert_post(
+			array(
+				'post_type'    => 'page',
+				'post_status'  => 'draft',
+				'post_title'   => $title,
+				'post_name'    => basename( $path ),
+				'post_parent'  => $parent,
+				'post_content' => wp_slash( ta_design_content( str_replace( '/', '-', $path ) ) ),
+			)
+		);
+		if ( 'en/contact/thanks' === $path ) {
+			update_post_meta( $id, '_ta_noindex', '1' );
+		}
+		$log[] = "英語版のページを下書きで作成しました：/$path/";
+	}
+
 	/* 5. Editable sections -------------------------------------------------------- */
 	// Designed pages get the design as section blocks, so they can be edited in the
 	// block editor. Pages already built from sections are left alone; the previous

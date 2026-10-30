@@ -6,6 +6,18 @@
 
 /** Default items: label => site path. Used to fill the menus the first time. */
 function ta_default_menu( $location ) {
+	if ( 'header_en' === $location || 'footer_en' === $location ) {
+		$items = array(
+			'Services' => '/en/services/',
+			'Works'    => '/en/works/',
+			'SHIZUNE'  => '/en/shizune/',
+			'About'    => '/en/about/',
+		);
+		if ( 'footer_en' === $location ) {
+			$items['Contact'] = '/en/contact/';
+		}
+		return $items;
+	}
 	$items = array(
 		'サービス'   => '/services/',
 		'実績'     => '/works/',
@@ -27,8 +39,10 @@ add_action(
 	function () {
 		register_nav_menus(
 			array(
-				'header' => 'ヘッダーメニュー',
-				'footer' => 'フッターメニュー',
+				'header'    => 'ヘッダーメニュー',
+				'footer'    => 'フッターメニュー',
+				'header_en' => 'ヘッダーメニュー（英語版）',
+				'footer_en' => 'フッターメニュー（英語版）',
 			)
 		);
 	}
@@ -73,8 +87,16 @@ add_action(
 	}
 );
 
-/** Sub-items of サービス in the header: label => [path, EN label]. */
-function ta_default_service_items() {
+/** Sub-items of the Services item in the header: label => [path, small label]. */
+function ta_default_service_items( $location = 'header' ) {
+	if ( 'header_en' === $location ) {
+		return array(
+			'Create the brand'  => array( '/en/services/create/', '01 CREATE' ),
+			'Design the market' => array( '/en/services/market-design/', '02 DESIGN THE MARKET' ),
+			'Connect locally'   => array( '/en/services/connect/', '03 CONNECT' ),
+			'Sell for real'     => array( '/en/services/sell/', '04 SELL' ),
+		);
+	}
 	return array(
 		'ブランドをつくる' => array( '/services/create/', '01 CREATE' ),
 		'市場を設計する'  => array( '/services/market-design/', '02 DESIGN THE MARKET' ),
@@ -145,8 +167,8 @@ function ta_menu_links( $location, $color ) {
 	} elseif ( false === $items ) {
 		foreach ( ta_default_menu( $location ) as $label => $path ) {
 			$subs = array();
-			if ( 'header' === $location && '/services/' === $path ) {
-				foreach ( ta_default_service_items() as $sub_label => $sub ) {
+			if ( in_array( $location, array( 'header', 'header_en' ), true ) && in_array( $path, array( '/services/', '/en/services/' ), true ) ) {
+				foreach ( ta_default_service_items( $location ) as $sub_label => $sub ) {
 					$subs[] = array( $sub_label, home_url( $sub[0] ), '', $sub[1], array() );
 				}
 			}
@@ -161,7 +183,7 @@ function ta_menu_links( $location, $color ) {
 			esc_attr( $color ),
 			esc_html( $link[0] )
 		);
-		if ( 'header' !== $location || ! $link[4] ) {
+		if ( ! in_array( $location, array( 'header', 'header_en' ), true ) || ! $link[4] ) {
 			echo $a . "\n"; // phpcs:ignore WordPress.Security.EscapeOutput -- escaped above.
 			continue;
 		}
@@ -178,3 +200,38 @@ function ta_menu_links( $location, $color ) {
 		echo "</div></div>\n";
 	}
 }
+
+// Once: create the English header and footer menus (Services opens its four pages).
+add_action(
+	'init',
+	function () {
+		if ( get_option( 'ta_menus_en' ) === '1' ) {
+			return;
+		}
+		$locations = get_nav_menu_locations();
+		foreach ( array( 'header_en' => 'Header (English)', 'footer_en' => 'Footer (English)' ) as $location => $name ) {
+			if ( ! empty( $locations[ $location ] ) ) {
+				continue;
+			}
+			$menu = wp_get_nav_menu_object( $name );
+			$id   = $menu ? $menu->term_id : wp_create_nav_menu( $name );
+			if ( is_wp_error( $id ) ) {
+				continue;
+			}
+			if ( ! $menu ) {
+				foreach ( ta_default_menu( $location ) as $label => $path ) {
+					$item = wp_update_nav_menu_item( $id, 0, array( 'menu-item-title' => $label, 'menu-item-url' => home_url( $path ), 'menu-item-type' => 'custom', 'menu-item-status' => 'publish' ) );
+					if ( 'header_en' === $location && '/en/services/' === $path && ! is_wp_error( $item ) ) {
+						foreach ( ta_default_service_items( 'header_en' ) as $sub_label => $sub ) {
+							wp_update_nav_menu_item( $id, 0, array( 'menu-item-title' => $sub_label, 'menu-item-url' => home_url( $sub[0] ), 'menu-item-description' => $sub[1], 'menu-item-parent-id' => $item, 'menu-item-type' => 'custom', 'menu-item-status' => 'publish' ) );
+						}
+					}
+				}
+			}
+			$locations[ $location ] = $id;
+		}
+		set_theme_mod( 'nav_menu_locations', $locations );
+		update_option( 'ta_menus_en', '1' );
+	},
+	21
+);
