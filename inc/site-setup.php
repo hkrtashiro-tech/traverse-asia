@@ -174,7 +174,7 @@ function ta_run_site_setup() {
 					'subject'            => '[Traverse Asia] お問い合わせ：[inquiry-type]（[your-org] [your-name] 様）',
 					'sender'             => 'Traverse Asia <sales@traverse-asia.com>',
 					'recipient'          => 'sales@traverse-asia.com',
-					'body'               => "お問い合わせの種類：[inquiry-type]\nお名前：[your-name]\n会社名・団体名：[your-org]\nメールアドレス：[your-email]\n電話番号：[your-tel]\nご相談内容：[topics]\n対象の国・地域：[areas]\n検討時期：[timing]\n\n詳しい内容：\n[your-message]\n\n--\n[_site_url] から送信",
+					'body'               => "お問い合わせの種類：[inquiry-type]\nお名前：[your-name]\n会社名・団体名：[your-org]\nメールアドレス：[your-email]\n電話番号：[your-tel]\nご相談内容：[topics]\n対象の国・地域：[areas]\n\n詳しい内容：\n[your-message]\n\n--\n[_site_url] から送信",
 					'additional_headers' => 'Reply-To: [your-email]',
 					'attachments'        => '',
 					'use_html'           => false,
