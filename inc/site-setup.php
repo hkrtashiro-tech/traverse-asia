@@ -172,8 +172,8 @@ function ta_run_site_setup() {
 				'mail'     => array(
 					'active'             => true,
 					'subject'            => '[Traverse Asia] お問い合わせ：[inquiry-type]（[your-org] [your-name] 様）',
-					'sender'             => 'Traverse Asia <wordpress@[_site_domain]>',
-					'recipient'          => '[_site_admin_email]',
+					'sender'             => 'Traverse Asia <sales@traverse-asia.com>',
+					'recipient'          => 'sales@traverse-asia.com',
 					'body'               => "お問い合わせの種類：[inquiry-type]\nお名前：[your-name]\n会社名・団体名：[your-org]\nメールアドレス：[your-email]\n電話番号：[your-tel]\nご相談内容：[topics]\n対象の国・地域：[areas]\n検討時期：[timing]\n\n詳しい内容：\n[your-message]\n\n--\n[_site_url] から送信",
 					'additional_headers' => 'Reply-To: [your-email]',
 					'attachments'        => '',
@@ -183,7 +183,7 @@ function ta_run_site_setup() {
 				'mail_2'   => array(
 					'active'             => true,
 					'subject'            => '【Traverse Asia】お問い合わせを受け付けました',
-					'sender'             => 'Traverse Asia <wordpress@[_site_domain]>',
+					'sender'             => 'Traverse Asia <sales@traverse-asia.com>',
 					'recipient'          => '[your-email]',
 					'body'               => "[your-name] 様\n\nTraverse Asiaへのお問い合わせありがとうございます。\n以下の内容で受け付けました。内容を確認のうえ、担当者よりご返信します。\n\nお問い合わせの種類：[inquiry-type]\n会社名・団体名：[your-org]\nご相談内容：[topics]\n対象の国・地域：[areas]\n\n詳しい内容：\n[your-message]\n\n--\nTraverse Asia合同会社\nsales@traverse-asia.com\n[_site_url]",
 					'additional_headers' => 'Reply-To: sales@traverse-asia.com',
@@ -215,8 +215,8 @@ function ta_run_site_setup() {
 				'mail'     => array(
 					'active'             => true,
 					'subject'            => '[Traverse Asia EN] 英語サイトからのお問い合わせ：[inquiry-type]（[your-org] [your-name]）',
-					'sender'             => 'Traverse Asia <wordpress@[_site_domain]>',
-					'recipient'          => '[_site_admin_email]',
+					'sender'             => 'Traverse Asia <sales@traverse-asia.com>',
+					'recipient'          => 'sales@traverse-asia.com',
 					'body'               => "Inquiry type: [inquiry-type]\nName: [your-name]\nCompany: [your-org]\nEmail: [your-email]\nCountry / region: [your-country]\nInterested in: [topics]\n\nMessage:\n[your-message]\n\n--\nSent from [_site_url]/en/contact/",
 					'additional_headers' => 'Reply-To: [your-email]',
 					'attachments'        => '',
@@ -226,7 +226,7 @@ function ta_run_site_setup() {
 				'mail_2'   => array(
 					'active'             => true,
 					'subject'            => 'Traverse Asia: we have received your message',
-					'sender'             => 'Traverse Asia <wordpress@[_site_domain]>',
+					'sender'             => 'Traverse Asia <sales@traverse-asia.com>',
 					'recipient'          => '[your-email]',
 					'body'               => "Dear [your-name],\n\nThank you for contacting Traverse Asia. We have received your message and will reply after reviewing it.\n\nInquiry type: [inquiry-type]\nCompany: [your-org]\nInterested in: [topics]\n\nMessage:\n[your-message]\n\n--\nTraverse Asia LLC\nsales@traverse-asia.com\n[_site_url]/en/",
 					'additional_headers' => 'Reply-To: sales@traverse-asia.com',
