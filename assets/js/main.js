@@ -134,3 +134,31 @@
   setTimeout(playFv, 800);
   sections.forEach(function (s) { if (s !== fv) io.observe(s); });
 })();
+
+/* Contact form: while CF7 sends, the button shows a spinner and "Sending…"
+ * and further clicks or Enter presses are ignored. */
+(function () {
+  var label = document.documentElement.lang === 'en' ? 'Sending…' : '送信中…';
+  document.addEventListener('submit', function (e) {
+    var form = e.target;
+    if (!form.classList || !form.classList.contains('ta-form')) return;
+    if (form.taBusy) { e.preventDefault(); e.stopImmediatePropagation(); return; }
+    var btn = form.querySelector('button[type="submit"]'), text = btn && btn.firstChild;
+    form.taBusy = true;
+    if (!btn) return;
+    btn.classList.add('is-sending');
+    btn.setAttribute('aria-disabled', 'true');
+    if (text && text.nodeType === 3) { btn.taText = text.nodeValue; text.nodeValue = label; }
+  }, true);
+  document.addEventListener('wpcf7submit', function (e) {
+    var form = e.target.querySelector ? (e.target.matches('form') ? e.target : e.target.querySelector('form.ta-form')) : null;
+    if (!form) return;
+    var btn = form.querySelector('button[type="submit"]');
+    if (form.wpcf7 && form.wpcf7.status === 'mail_sent') return; // the thanks page is opening
+    form.taBusy = false;
+    if (!btn) return;
+    btn.classList.remove('is-sending');
+    btn.removeAttribute('aria-disabled');
+    if (btn.taText != null && btn.firstChild && btn.firstChild.nodeType === 3) btn.firstChild.nodeValue = btn.taText;
+  });
+})();

@@ -131,6 +131,7 @@ function ta_en_fixed_texts() {
 		'>バンコク<'          => '>Bangkok<',
 		'>シンガポール<'        => '>Singapore<',
 		'サービスの4つのステップ'   => 'The four service steps',
+		'ページ内リンク'       => 'On this page',
 	);
 }
 

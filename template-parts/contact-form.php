@@ -5,7 +5,7 @@
 $ta_form_id = ta_contact_form_id();
 if ( $ta_form_id ) : ?>
 <div class="ta-form-wrap" data-thanks="<?php echo esc_url( home_url( ta_is_en() ? '/en/contact/thanks/' : '/contact/thanks/' ) ); ?>" style="min-width: 0;">
-	<?php echo do_shortcode( '[contact-form-7 id="' . $ta_form_id . '"]' ); ?>
+	<?php echo do_shortcode( '[contact-form-7 id="' . $ta_form_id . '" html_title="' . esc_attr( ta_t( 'お問い合わせフォーム', 'Contact form' ) ) . '"]' ); ?>
 </div>
 <?php else : ?>
 <div style="border-top: 1px solid #22322F; padding: 28px 0; min-width: 0;">

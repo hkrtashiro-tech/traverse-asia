@@ -92,7 +92,12 @@ img{max-width:100%}
 .ta-form .wpcf7-not-valid{border-color:#A3402E}
 .ta-form .wpcf7-not-valid-tip{color:#A3402E;font-size:13.5px;font-weight:700;margin-top:6px}
 .ta-form .wpcf7-response-output{margin:24px 0 0!important;padding:14px 18px!important;border-radius:12px;border-width:1px!important;font-size:15px}
-.ta-form .wpcf7-spinner{margin:0 0 0 12px}
+.ta-form .wpcf7-spinner{display:none}
+.ta-form .cf-turnstile{min-height:65px}
+.ta-form button.is-sending{cursor:progress;opacity:.85}
+.ta-form button.is-sending .ic{font-size:0}
+.ta-form button.is-sending .ic::after{content:"";width:18px;height:18px;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;animation:ta-spin .8s linear infinite}
+@keyframes ta-spin{to{transform:rotate(360deg)}}
 .ta-form .req{font-size:11.5px;font-weight:700;color:#FFFFFF;background:#2F5A3A;border-radius:4px;padding:1px 6px;margin-left:8px;vertical-align:2px}
 
 /* ---- phone adjustments to the design ---- */
