@@ -25,14 +25,14 @@
     try { sessionStorage.setItem('ta_lead', document.documentElement.lang === 'en' ? 'en' : 'ja'); } catch (e) {}
     window.location.href = form.getAttribute('data-thanks');
   });
-  /* Analytics (GTM): one "generate_lead" event when a sent form opens the
-   * thanks page; reloading or visiting the thanks page directly sends none. */
+  /* Analytics (GA4 via Site Kit's gtag): one "generate_lead" event when a sent
+   * form opens the thanks page; reloading or visiting it directly sends none. */
   if (/\/contact\/thanks\/?$/.test(location.pathname)) {
     try {
       var lead = sessionStorage.getItem('ta_lead');
       if (lead) {
         sessionStorage.removeItem('ta_lead');
-        (window.dataLayer = window.dataLayer || []).push({ event: 'generate_lead', form_language: lead });
+        if (typeof window.gtag === 'function') window.gtag('event', 'generate_lead', { form_language: lead });
       }
     } catch (e) {}
   }
