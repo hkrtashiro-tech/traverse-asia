@@ -88,6 +88,8 @@ def prep(b):
     main = re.sub(r'<span class="ph-ph" style="([^"]*)">[\s\S]*?</span>',
                   lambda m: '<img src="placeholder.jpg" alt="" style="%s; object-fit: cover; display: block;">' % m.group(1).rstrip('; '),
                   main)
+    if '佐藤 学' in main:  # the company page's only placeholder is his photo
+        main = main.replace('<img src="placeholder.jpg"', '<img src="sato.jpg"', 1)
     main = responsive_columns(main, css)
     if b == 'C2':
         main = main.replace('data-sec="map"', 'id="area" data-sec="map"', 1)
