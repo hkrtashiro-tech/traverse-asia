@@ -22,3 +22,19 @@ add_filter(
 		return $class . ' ta-form';
 	}
 );
+
+/**
+ * CF7 puts the Turnstile check at the top of a form whose template has no
+ * [turnstile] tag; show it just above the consent and send button instead.
+ */
+add_filter(
+	'wpcf7_form_elements',
+	function ( $html ) {
+		if ( preg_match( '#<div [^>]*class="wpcf7-turnstile cf-turnstile"[^>]*></div>#', $html, $m ) && false !== strpos( $html, '<span class="consent">' ) ) {
+			$html = str_replace( $m[0], '', $html );
+			$html = preg_replace( '#<span class="consent">#', $m[0] . '<span class="consent">', $html, 1 );
+		}
+		return $html;
+	},
+	20
+);
