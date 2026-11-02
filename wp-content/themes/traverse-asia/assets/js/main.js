@@ -22,8 +22,20 @@
   /* Contact Form 7: go to the thanks page after a successful send */
   var form = document.querySelector('.ta-form-wrap');
   if (form) document.addEventListener('wpcf7mailsent', function () {
+    try { sessionStorage.setItem('ta_lead', document.documentElement.lang === 'en' ? 'en' : 'ja'); } catch (e) {}
     window.location.href = form.getAttribute('data-thanks');
   });
+  /* Analytics (GTM): one "generate_lead" event when a sent form opens the
+   * thanks page; reloading or visiting the thanks page directly sends none. */
+  if (/\/contact\/thanks\/?$/.test(location.pathname)) {
+    try {
+      var lead = sessionStorage.getItem('ta_lead');
+      if (lead) {
+        sessionStorage.removeItem('ta_lead');
+        (window.dataLayer = window.dataLayer || []).push({ event: 'generate_lead', form_language: lead });
+      }
+    } catch (e) {}
+  }
 
   /* map hover link: list <-> map */
   var fig = document.querySelector('.map-fig');
